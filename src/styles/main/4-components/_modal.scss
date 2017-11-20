@@ -1,0 +1,195 @@
+.blocker {
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    z-index: 100;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.05);
+    text-align: center;
+    
+    &:before{
+        content: "";
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        margin-right: -0.05em;
+    }
+
+    &.behind {
+        background-color: transparent;
+    }
+
+    @media (max-width: $mobile) {
+        padding: 0;
+    }
+}
+
+.modal {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    z-index: 101;
+    max-width: 640px;
+    box-sizing: border-box;
+    width: 90%;
+    background: #fff;
+    padding: 40px 64px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -o-border-radius: 8px;
+    -ms-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 0 30px #ccc;
+    -moz-box-shadow: 0 0 30px #ccc;
+    -o-box-shadow: 0 0 30px #ccc;
+    -ms-box-shadow: 0 0 30px #ccc;
+    box-shadow: 0 0 30px #ccc;
+    text-align: left;
+    color: #212b36;
+
+    @media (max-width: $mobile) {
+        padding: 40px;
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        -o-border-radius: 0px;
+        -ms-border-radius: 0px;
+        border-radius: 0px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow: auto;
+    }
+
+    &.modal-like-pc {
+        @media (max-width: $mobile) {
+            padding: 40px;
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            -o-border-radius: 8px;
+            -ms-border-radius: 8px;
+            border-radius: 8px;
+            position: relative;
+            width: 90%;
+            max-width: 90%;
+            height: auto;
+        }
+    }
+
+    a.close-modal[class*="icon-remove"] {
+        position: absolute;
+        font-weight: 800;
+        font-size: 1.3rem;
+        top: 20px;
+        right: 25px;
+        width: 20px;
+        height: 20px;
+        color: #c4c5c6;
+        line-height: 1.25;
+        text-align: center;
+        text-decoration: none;
+        text-indent: 0;
+
+        &:hover {
+            color: #212b36;
+        }
+    }
+
+    .template_header {
+        padding-bottom: 25px;
+
+        h2.title {
+            color: #212b36;
+            font-size: 2.2rem;
+
+            @media (max-width: $mobile) {
+                font-size: 1.6rem;
+            }
+        }
+
+        p {
+            padding: 25px 0 20px 0;
+        }
+    }
+
+    &#lineitem_countries_modal {
+        .template_header {
+            padding-bottom: 25px;
+
+            h2.title {
+                color: #212b36;
+                font-size: 1.0rem;
+                font-weight: 600;
+                letter-spacing: 1.5px;
+            }
+
+            p {
+                padding: 20px 0;
+                font-size: 0.8rem;
+                line-height: 1.5;
+            }
+        }
+    }
+
+    & input {
+        width: 100%;
+
+        &.form-field {
+            background: #f5f5f5;
+            border: 1px solid #f5f5f5;
+            padding: 12px;
+            font-size: 0.9rem;
+            margin: 8px 0;
+
+            &:focus {
+                outline: none;
+                border: 1px solid #dedede;
+            }
+
+            &::placeholder {
+                color: #212b36;
+            }
+        }
+    }
+
+    & .subject {
+        font-size: 1.15rem;
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 2px;
+        padding: 5px 0 10px 0;
+
+        @media (max-width: $mobile) {
+            font-size: 1.0rem;
+        }
+    }
+
+    & .note {
+        font-size: 0.8em;
+        line-height: 2.5rem;
+    }
+
+    .action_bottom {
+        text-align: center;
+    }
+
+    a:focus {
+        outline: none;
+    }
+
+    .errors {
+        display: none;
+        border: 1px solid #eee;
+        background: #f5f5f5;
+        padding: 10px 20px;
+        margin-bottom: 20px;
+        color: indianred;
+        font-size: 0.9rem;
+    }
+}
+

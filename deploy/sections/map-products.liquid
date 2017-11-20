@@ -1,0 +1,31 @@
+<div id="select-product">
+    <div class="maps__step_header">
+        <h5>2. select your product</h5>
+    </div>
+
+    <div class="collection">
+        <div class="row">
+            {% for product in collections.all.products %}
+            <div class="products-item">
+              <a class="products-item__link" data-id="{{product.id}}" data-url="{{ product.url }}">
+                <img src="{{ product.featured_image | product_img_url: '275x275' | crop: 'center' }}" alt="{{ product.featured_image.alt | escape }}">
+                <h4 class="products-item__title">{{ product.title }}</h4>
+              </a>
+                
+              <div class="products-item__colors">
+                {% for option in product.options_with_values %}
+                  {% assign option_name = option.name | downcase %}
+                  {% if option_name == 'color' %}
+                    {% for value in option.values %}
+                    <a href="#" class="products-item__colors--red"><img src="{{'red-white_color.svg' | asset_url }}" alt="{{ value }}"></a>
+                    {% comment %}Check how to display colors {% endcomment %}
+                    {%endfor%}
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <p class="products-item__price">{{ product.price | money }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

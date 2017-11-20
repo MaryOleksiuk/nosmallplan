@@ -1,0 +1,105 @@
+.giftcard {
+  padding: 0;
+
+  @include breakpoint(tablet) {
+    padding: 0 117px 52px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  &__image {
+    width: 100%;
+
+    &:nth-of-type(1) {
+      display: none;
+
+      @include breakpoint(tablet) {
+        width: 50%;
+        display: block;
+        margin-right: 17px;
+      }
+    }
+
+    &:nth-of-type(2) {
+      position: relative;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+
+      @include breakpoint(tablet) {
+        height: 100%;
+        opacity: 0.5;
+      }
+    }
+
+    &-content {
+      position: static;
+      width: 100%;
+      padding: 33px 33px 44px 33px;
+
+      @include breakpoint(tablet) {
+        padding: 0;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        width: 95%;
+      }
+
+      @include breakpoint(desktop) {
+        width: 80%;
+        transform: translateY(-25%);
+        top: 25%;
+        right: 50px;
+      }
+
+      .button {
+        width: 164px;
+      }
+    }
+  }
+
+  &__title {
+    padding-bottom: 21px;
+    font-family: "SaolDisplay", sans-serif;
+    font-size: 36px;
+    line-height: 45px;
+    font-weight: $fw-bold;
+    letter-spacing: 1px;
+    color: $light-black;
+
+    @include breakpoint(tablet) {
+      font-size: 34px;
+      line-height: 35px;
+      padding-bottom: 0;
+    }
+
+    @include breakpoint(desktop) {
+      font-size: 56px;
+      line-height: 59px;
+    }
+
+    span {
+      font-weight: $fw-light;
+    }
+  }
+
+  &__text {
+    font-size: 16px;
+    line-height: 19px;
+    color: $light-black;
+    padding-bottom: 20px;
+
+    @include breakpoint(desktop) {
+      padding-bottom: 25px;
+      line-height: 24px;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+<footer class="footer">
+  <ul class="footer__nav">
+    {% for link in linklists.footer.links %}
+    <li class="footer__nav-item">
+      <a class="footer__nav-item-link {% if link.active %}footer__nav-item-link--active{% endif %}" href="{{ link.url }}">{{ link.title }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  <ul class="footer__social">
+    {% for link in linklists.social.links %}
+    {% assign social_icon = link.title | handleize %}
+    <li class="footer__social-item">
+      <a class="footer__social-item-link footer__social-item-link--{{ social_icon }}" href="{{ link.url }}">
+        {% case social_icon %}
+          {% when 'facebook' %}
+          <img src="{{ 'facebook_icon.svg' | asset_url }}" alt="facebook">
+          {% when 'twitter' %}
+          <img src="{{ 'twitter_icon.svg' | asset_url }}" alt="twitter">
+          {% when 'instagram' %}
+          <img src="{{ 'instagram_icon.svg' | asset_url }}" alt="instagram">
+          {% when 'pinterest' %}
+          <img src="{{ 'pinterest_icon.svg' | asset_url }}" alt="pinterest">
+          {% else %}
+          test
+        {% endcase %}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  <p class="footer__copyright">&copy; Copyright {{shop.name}} {{ 'now' | date: "%Y" }}</p>
+</footer>

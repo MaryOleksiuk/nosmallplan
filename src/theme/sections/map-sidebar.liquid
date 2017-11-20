@@ -1,0 +1,53 @@
+<div id="map_sidebar" class="">
+	<div class="map_sidebar--block active--side" id="map_sidebar__block_step">
+		<h2>{{ section.settings.title_step1 }}</h2>
+		<div>
+			<p>{{ section.settings.desc_step1 }}</p>
+			<button class="button button--disabled maps__buttons_save">save your map</button>
+			{%- if customer -%}
+			<a class="maps__buttons_load">Load an Existing Map</a>
+			{%- else -%}
+			<a class="maps__buttons_load">Log in for previous maps</a>
+			{%- endif -%}
+			<button class="button button--disabled maps__buttons_product">continue</button>
+		</div>
+	</div>
+	<div class="map_sidebar--block" id="map_sidebar__block_step2">
+		<h2>{{ section.settings.title_step2 }}</h2>
+	</div>
+	<div class="map_sidebar--block" id="map_sidebar__block_step3">
+		<h2>{{ section.settings.title_step3 }}</h2>
+	</div>
+</div>
+
+{% schema %}
+  {
+    "name": "Sidebar for map page",
+	"settings": [
+		{
+			"type": "text",
+			"id": "title_step1",
+			"label": "Step 1",
+			"default": "1. create your map"
+		},
+		{
+			"type": "textarea",
+			"id": "desc_step1",
+			"label": "Description for step 1",
+			"default": "Use the interactive map to select the countries you have traveled to. When you have completed your map. Continue to step 2 and select your product you would like to have this map applied to!"
+		},
+		{
+			"type": "text",
+			"id": "title_step2",
+			"label": "Step 2",
+			"default": "2. select your product"
+		},
+		{
+			"type": "text",
+			"id": "title_step3",
+			"label": "Step 3",
+			"default": "3. finalize your product"
+		}
+	]
+  }
+{% endschema %}

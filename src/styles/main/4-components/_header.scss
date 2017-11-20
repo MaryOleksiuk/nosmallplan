@@ -1,0 +1,397 @@
+.header {
+  position: relative;
+  height: 100%;
+  padding: 0;
+  border-bottom: 1px solid #E3E3E3;
+  z-index: 1;
+  @include clearfix;
+  height: $header-height;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #fff;
+  &--index {
+    background: transparent;
+    &.header--sticky {
+      background: #fff;
+    }
+  }
+  .header-sticky-image {
+    display: none;
+  }
+  &--sticky {
+    img {
+      display: none;
+    }
+    .header-sticky-image {
+      display: inline-block;
+    }
+  }
+
+
+  &__logo-image {
+    max-width: 199px;
+    width: 100%;
+    height: 56px;
+    display: block;
+    float: none;
+    margin: 0 auto;
+
+    @include breakpoint(tablet) {
+      float: left;
+      margin-left: 63px;
+      text-align: left;
+    }
+  }
+
+  // Navigation
+  &__nav {
+    font-size: 0;
+    width: 88%;
+    height: 100%;
+    position: fixed;
+    float: none;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 0; /*CHANGE*/
+    visibility: hidden; /*CHANGE*/
+    transition: transform 3s;
+    transform: translateX(-88%);
+    
+    /* non-critical appearance styles */
+    list-style: none;
+    background-color: #17457B;
+
+    @include breakpoint(tablet) {
+      display: block;
+      position: relative;
+      padding: 0;
+      margin-right: 70px;
+      text-align: center;
+      float: right;
+      width: auto;
+
+      opacity: 1;
+      visibility: visible;
+      background-color: transparent;
+      transition: unset;
+      transform: translateX(0);
+    }
+
+    &-item {
+      display: inline-block;
+      padding: 0;
+      margin-bottom: 27px;
+      box-sizing: border-box;
+      text-align: center;
+
+      &-accounts {
+        display: none;
+
+        &-back {
+          position: absolute;
+          top: 18px;
+          left: 50%;
+          margin-left: -30px;
+
+          .header__nav-item-link {
+            font-weight: 400;
+            font-size: 20px;
+            text-transform: capitalize;
+          }
+        }
+
+        &-signout {
+          position: absolute;
+          bottom: 30px;
+          left: 50%;
+          margin-left: -30px;
+          .header__nav-item-link {
+            font-weight: 400;
+            font-size: 20px;
+            text-transform: capitalize;
+          }
+        }
+      }
+
+      @include breakpoint(tablet) {
+        padding: 0 40px;
+        margin-bottom: 0;
+      }
+
+      &--account,
+      &--cart {
+        padding: 0;
+        border: none;
+
+        @include breakpoint(tablet) {
+          border-left: 1px solid #E3E3E3;
+        }
+      }
+
+      &--cart {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 12%;
+        height: 100%;
+
+        @include breakpoint(tablet) {
+          width: auto;
+        }
+
+        .header__nav-item-link {
+          padding: 0;
+          height: 100%;
+          width: 100%;
+          display: block;
+          line-height: 52px;
+          color: $light-black;
+
+          @include breakpoint(tablet) {
+            padding: 0 20px;
+            width: auto;
+            line-height: 56px;
+          }
+
+          &--home {
+            color: $white;
+            .header--sticky & {
+              color: $light-black;
+              @include breakpoint(tablet) {
+                color: $light-black;
+              }
+            }
+          }
+        }
+
+        .products-amount {
+          font-size: 18px;
+          line-height: 0;
+          font-family: 'SaolDisplay', sans-serif;
+          font-weight: $fw-medium;
+        }
+      }
+
+      &-link {
+        padding: 18px 0px 18px;
+        display: block;
+        color: $white;
+        font-size: 25px;
+        font-weight: $fw-bold;  
+        line-height: 16px;  
+        text-align: center;
+        text-transform: uppercase;
+        transition: all 0.5s ease;
+        border-bottom: 2px solid transparent;
+        box-sizing: border-box;
+
+        @include breakpoint(tablet) {
+          color: $light-black;
+          font-size: 14px;
+        }
+
+        &--account {      
+          padding: 16px 0 18px;
+
+          @include breakpoint(tablet) {
+            padding: 16px 25px 18px;
+          }
+
+          span {
+            @include breakpoint(tablet) {
+              display: none;
+            }
+          }
+        }
+
+        &--home {
+          color: $white;
+          transition: border-color 0.3s;
+
+          &:hover,
+          &:active {
+            border-color: $white;
+          }
+
+          @include breakpoint(tablet) {
+            color: $white;
+            .header--sticky & {
+              color: $light-black;
+            }
+          }
+        }
+      }
+
+      &-img {
+        &--buy {
+          width: 15px;
+          height: 15px;
+        }
+        &--account {
+          width: 20px;
+          height: 16px;
+
+          @media only screen and (max-width: 768px) {
+            display: none;
+            .header--sticky & {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+    &--account {
+      display: none;
+
+      @include breakpoint(tablet) {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+/* Navigation Toggle Hamburger Menu START*/
+.nav-toggle {
+  /* critical styles - hide the checkbox input */
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+
+label[for="nav-toggle"] {
+  position: absolute;
+  top: 18px;
+  left: 12px;
+  display: inline-block;
+  width: $hamburger-width;
+  height: $hamburger-height;
+  border: $hamburger-line-width * 2 solid $hamburger-background-color;
+  background: $hamburger-background-color;
+  z-index: 2;
+
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+  // The <span> elements are hamburger lines
+  span {
+    position: absolute;
+    height: $hamburger-line-width;
+
+    // Position all of the lines 
+    // positioning of the bottom two hamburger lines below
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+
+    background: $hamburger-line-color;
+    transition: all $hamburger-animation-speed;
+    border-radius: $hamburger-line-width/2;
+
+    // Position the middle hamburger line
+    &:nth-of-type(2) {
+      top: 50%;
+      margin-top: -1 * ($hamburger-line-width/2);
+    }
+
+    // Position the bottom hamburger line
+    &:last-of-type {
+      bottom: 0;
+      top: auto;
+    }
+  }
+}
+
+label[for="nav-toggle"].nav-toggle--white {
+  span {
+    background: $white;
+    .header--sticky & {
+      background: $hamburger-line-color;
+    }
+  }
+}
+
+input[type="checkbox"]#nav-toggle:checked ~ label {
+  span {
+    background: $white;
+  }
+
+  span:first-of-type,
+  span:last-of-type {
+    width: $hamburger-height;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    margin-top: -1 * ($hamburger-line-width / 2);
+    margin-left: -1 * ($hamburger-height / 2);
+  }
+
+  span:first-of-type {
+    transform: rotate(45deg);
+  }
+
+  // Make the middle line shrink to 0% width and fade out
+  span:nth-of-type(2) {
+    opacity: 0;
+    left: 50%;
+    width: 0;
+    right: 50%;
+  }
+
+  span:last-of-type {
+    transform: rotate(-45deg);
+  }
+}
+
+// Fade the menu in
+input[type="checkbox"]:checked ~ .header__nav {
+  opacity: 1;
+  visibility: visible;
+  transition:
+    visibility $hamburger-animation-speed,
+    opacity $hamburger-animation-speed;
+  transform: translateX(0);
+}
+/* Navigation Toggle Hamburger Menu END*/
+
+/* Inforbar Styles START */
+.infobar {
+  width: 100%;
+  height: 40px;
+  background-color: $green;
+  position: relative;
+
+  &__text {
+    color: $white;
+    font-size: 16px;
+    line-height: 40px;
+    font-weight: $fw-semi-bold;
+    text-align: center;
+  }
+
+  .button-close {
+    position: absolute;
+    top: 0;
+    right: 40px;
+    font-size: 20px;
+    line-height: 40px;
+    color: $white;
+  }
+}
+/* Inforbar Styles END */
+
+

@@ -1,0 +1,87 @@
+// Styles for Banner
+.banner {
+  width: 100%;
+  position: relative;
+  top: -58px;
+  text-align: center;
+  overflow: hidden;
+
+  @include breakpoint(tablet) {
+    height: 100%;
+    text-align: left;
+  }
+
+  &__image {
+    min-height: 580px;
+    object-fit: cover;
+    overflow: hidden;
+
+    @include breakpoint(tablet) {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    padding-bottom: 45px;
+    font-family: 'SaolDisplay', sans-serif;
+    font-size: 54px;
+    line-height: 50px;
+    font-weight: $fw-bold;
+    letter-spacing: 2px;
+    color: $white;
+
+    @include breakpoint(tablet) {
+      font-size: 74px;
+      line-height: 78px;
+    }
+  }
+
+  &__content {
+    position: absolute;
+    width: 100%;
+    top: auto;
+    bottom: 35px;
+    left: 0;
+    margin: 0 auto;
+    @include breakpoint(tablet) {
+      top: 125px;
+      left: 63px;
+      width: 40%;
+    }
+
+    @include breakpoint(desktop) {
+      transform: translateY(-45%);
+      top: 45%;
+    }
+
+    .button--green {
+      width: 307px;
+      margin: 0 auto;
+
+      @include breakpoint(tablet) {
+        width: 277px;
+        margin: 0;
+      }
+    }
+  }
+  &--home_slider {
+    margin: 0;
+    .slick-slide {
+      padding: 0;
+      letter-spacing: initial;
+      text-align: inherit;
+      text-transform: none;
+      position: relative;
+      &:hover {
+        opacity: 1;
+      }
+      img {
+        margin: 0;
+
+      }
+    }
+    .slick-active {
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+<ul class="products-item__colors swatch">
+  {% for option in product.options_with_values %}
+    {% assign option_name = option.name | downcase %}
+    {% if option_name == 'color' %}
+
+      {% assign option_index = forloop.index0 %}
+      {% if option.values %}
+        <p class="product__small-title">{{ option_name }}: <span>{{option.selected_value}}</span></p>
+      {% endif %}
+
+      {% for value in option.values %}
+        <li class="products-item__colors-link swatch-element{% if option.selected_value == value %} swatch-active{% endif %}" data-value="{{ value }}" data-id="{{ option_index }}">
+          <img src="{{ value | downcase | strip_newlines | strip_html | append: '.svg' | asset_url }}" width="19" height="19" alt="{{ color | strip }}" title="{{ value | strip }}"/>
+        </li>
+      {%endfor%}
+
+    {% endif %}
+  {% endfor %}
+</ul>

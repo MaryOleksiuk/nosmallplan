@@ -1,0 +1,10 @@
+<footer class="footer">
+  <ul class="footer__nav">
+    {% for link in linklists.footer.links %}
+    <li class="footer__nav-item">
+      <a class="footer__nav-item-link {% if link.active %}footer__nav-item-link--active{% endif %}" href="{{ link.url }}">{{ link.title }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  <p class="footer__copyright">&copy; Copyright {{shop.name}} {{ 'now' | date: "%Y" }}</p>
+</footer>

@@ -1,0 +1,13 @@
+// Pretty EM Conversor
+@function em($pixels, $context: 16) {
+  @return #{$pixels/$context}em;
+}
+
+// Pretty EM Conversor
+@function rem($pixels) {
+  @return #{$pixels/16}rem;
+}
+
+@function hd($target) {
+  @return $target / 2;
+}

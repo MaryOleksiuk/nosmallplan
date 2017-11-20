@@ -1,0 +1,350 @@
+.cart {
+  width: 88%;
+  margin: 0 auto;
+  padding-bottom: 58px;
+
+  &__title {
+    padding: 28px 0 10px;
+    font-size: 24px;
+    line-height: 46px;
+    font-weight: $fw-medium;
+    text-align: center;
+
+    @include breakpoint(tablet) {
+      padding: 58px 0 43px;
+      font-size: 48px;
+    }
+  }
+
+  &__table {
+    width: 100%;
+    color: $light-black;
+    position: relative;
+  }
+
+  &__row {
+    padding: 10px 0 22px;
+    border-bottom: 1px solid $border-gray;
+    display: block;
+    @include clearfix;
+
+    @include breakpoint(tablet) {
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+      padding: 25px 0;
+    }
+  }
+
+  &__cell {
+    width: 57%;
+    float: right;
+    text-align: left;
+    font-size: 14px;
+    line-height: 19px;
+    vertical-align: middle;
+    color: $light-black;
+
+    @include breakpoint(tablet) {
+      float: none;
+      width: 10%;
+      padding: 25px 10px;
+      font-size: 16px;
+      line-height: 24px;
+      text-align: center;
+    }
+
+    &--remove {
+      width: 3%;
+    }
+
+    &--product-image {
+      width: 40%;
+      height: 100%;
+      padding: 0;
+      float: left;
+
+      @include breakpoint(tablet) {
+        float: none;
+        width: 27%;
+        height: 100%;
+      }
+    }
+
+    &--description {
+      width: 57%;
+      text-align: left;
+      float: right;
+
+      @include breakpoint(tablet) {
+        width: 40%;
+        height: 100%;
+        float: none;
+        text-align: left;
+      }
+    }
+
+    &--country-selection {
+      @include breakpoint(tablet) {
+        display: none;
+      }
+    }
+  }
+
+  &__header {
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: $fw-bold;
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 1px solid $border-gray;
+    display: none;
+
+    @include breakpoint(tablet) {
+      display: flex;
+      height: auto;
+      padding: 0;
+    }
+
+    &-item {
+      width: 10%;
+      padding-bottom: 12px;
+
+      &:first-child {
+        width: 67%;
+      }
+
+      &:last-child {
+        width: 3%;
+      }
+    }
+  }
+
+  &__quantity {
+    width: 100%;
+    max-width: 107px;
+    height: 46px;
+    margin-bottom: 11px;
+    padding-left: 17px;
+    line-height: 46px;
+    color: $light-gray;
+    border: 1px solid $light-gray;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      margin: 0;
+      font-size: 60px;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &--empty-message {
+    margin-bottom: 170px;
+    text-align: center;
+    font-size: 24px;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  &__product {
+    &--title {
+      padding-bottom: 16px;
+      padding-right: 15px;
+      font-size: 11px;
+      line-height: 15px;
+      font-weight: $fw-bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+
+      @include breakpoint(tablet) {
+        padding-bottom: 7px;
+        padding-right: 0;
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+
+    &--details {
+      display: none;
+
+      @include breakpoint(tablet) {
+        font-size: 12px;
+        line-height: 17px;
+        font-weight: $fw-medium;
+        display: block;
+      }
+    }
+
+    &--countries {
+      margin-top: 10px;
+      padding: 11px;
+      background-color: $f8-gray;
+      font-size: 12px;
+      line-height: 17px;
+      font-weight: 500;
+      position: absolute;
+      top: 30px;
+      display: none;
+
+      @include breakpoint(tablet) {
+        display: block;
+        position: static;
+      }
+    }
+
+    &--notice {
+      font-size: 12px;
+      padding-top: 10px;
+    }
+  }
+
+  .item-price {
+    display: none;
+
+    @include breakpoint(tablet) {
+      display: block;
+    }
+  }
+
+  &__country-selection {
+    display: block;
+    margin-top: 5px;
+    padding: 0;
+    font-size: 12px;
+    line-height: 17px;
+    text-decoration: underline;
+
+    @include breakpoint(tablet) {
+      display: none;
+    }
+  }
+
+  &__remove {
+    position: absolute;
+    right: 0;
+    top: 10px;
+
+    @include breakpoint(tablet) {
+      position: static;
+    }
+  }
+
+  &__checkout {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint(tablet) {
+      flex-direction: row;
+      padding: 27px 5px 0 15px;
+    }
+
+    &-promo {
+      padding-right: 0;
+      padding-top: 10px;
+      margin-bottom: 25px;
+      font-size: 12px;
+      line-height: 17px;
+      text-align: center;
+      flex: 1;
+      order: 0;
+
+      @include breakpoint(tablet) {
+        padding: 0 40px 0 10px;
+        margin-bottom: 0;
+        text-align: right;
+      }
+    }
+  }
+
+  &__total {
+    width: 100%;
+
+    @include breakpoint(tablet) {
+      width: 36%;
+    }
+
+    .button {
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    div {
+      span:last-child {
+        float: right;
+      }
+    }
+
+    span {
+      font-size: 11px;
+      line-height: 30px;
+
+      @include breakpoint(tablet) {
+        font-size: 14px;
+      }
+    }
+
+    &-title {
+      font-weight: $fw-bold;
+      text-transform: uppercase;
+    }
+
+    &-price {
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid $gray-line;
+    }
+
+    &-confirm {
+      margin-top: 25px;
+      margin-bottom: 17px;
+      padding: 23px 15px 17px;
+      text-align: center;
+      background-color: $s-gray;
+
+      &-title {
+        padding-bottom: 10px;
+        font-size: 14px;
+        line-height: 25px;
+        font-weight: $fw-bold;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        @include breakpoint(tablet) {
+          font-size: 18px;
+        }
+      }
+
+      &-text {
+        padding-bottom: 20px;
+        font-size: 12px;
+        line-height: 17px;
+      }
+    }
+
+    .button-only-giftcard {
+      margin-top: 20px;
+    }
+  }
+
+  .continue-shopping {
+    order: 5;
+    width: 100%;
+    margin-top: 10px;
+
+    @include breakpoint(tablet) {
+      margin-top: 0;
+      width: 227px;
+      order: 0;
+    }
+
+    @include breakpoint(desktop) {
+      width: 277px;
+    }
+  }
+}

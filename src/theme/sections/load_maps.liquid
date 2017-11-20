@@ -1,0 +1,14 @@
+<div id="load--maps-blocker"></div>
+<div id="load--maps">
+	<a href="#" class="load--maps_close">X</a>
+	<h6>select an exisiting map to load</h6>
+	<div class="maps--sliders">
+		<div class="item" data-id="-1" data-setting="" data-name="">
+			{{ 'map_icon.svg' | asset_url | img_tag }}
+			<div class="title">create new map</div>
+		</div>
+	</div>
+</div>
+<script>
+	window.map_icon_url = "{{ 'map_icon.svg' | asset_url }}";
+</script>

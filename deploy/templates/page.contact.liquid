@@ -1,0 +1,35 @@
+   
+<section class="contact">
+  <h1 class="contact__title">{{ page.title }}</h1>
+  <p class="contact__text">{{ page.content }}</p>
+
+  <div class="contact__form">
+    {% form 'contact' %}
+      {% if form.posted_successfully? %}
+        <p class="form-success">
+          {{ 'contact.form.post_success' }}
+        </p>
+      {% endif %}
+
+      {{ form.errors | default_errors }}
+      <div class="contact__input-name">
+        <input class="contact__input" type="text" name="First Name" value="" placeholder="First Name *" required>
+        <input class="contact__input contact__input--name" type="text" name="Last Name" placeholder="Last Name *" required>
+      </div>
+
+      <input class="contact__input" type="email" name="E-Mail" autocorrect="off" autocapitalize="off" value="" placeholder="Enter Your E-Mail *" required>
+
+      <label class="contact__select-wrap">
+        <select class="contact__select">
+          <option disabled selected value="">What is your reason for contacting us?</option>
+        </select>
+      </label>
+
+      <input class="contact__input" type="text" name="Subject" placeholder="Subject" value="">
+
+      <textarea class="contact__textarea" name="Message" placeholder="Message" value=""></textarea>
+
+      <input type="submit" class="button button--green" value="Submit">
+    {% endform %}
+  </div>
+</section>   

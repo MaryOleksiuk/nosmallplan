@@ -1,0 +1,32 @@
+<div class="section section--black">
+  <img src="{% if section.settings.image == blank %} {{'about-us_section-bg1.jpg' | asset_url }} {%else %} {{ section.settings.image }} {% endif %}" alt="" class="section__image">
+  <div class="section__content">
+    <h3 class="section__title">{{ section.settings.title }}</h3>
+    <p class="section__text">{{ section.settings.description }}</p>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Section Black",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Section Title"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "Maecenas molestie mi non pharetra facilisis. Curabitur sed risus tortor. Vestibulum in dolor id nisi luctus porta facilisis eget sem. Proin ante ligula, consequat tincidunt nisl ut, ornare convallis augue. Donec tortor mauris, volutpat a ipsum in, pharetra consequat massa. Nunc cursus iaculis augue ut malesuada. Vestibulum suscipit ultricies sem, eu tincidunt massa ornare at."
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    }
+  ]
+}
+{% endschema %}

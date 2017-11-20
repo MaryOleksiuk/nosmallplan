@@ -1,0 +1,140 @@
+{% layout 'customer' %}
+
+{{ "ammap-lib.js" | asset_url | script_tag }}
+{{ 'ammap-export.css' | asset_url | stylesheet_tag }}
+
+<script>
+    var countries = [];
+
+    var map = AmCharts.makeChart( "customer-mappanel", {
+        "type": "map",
+        "theme": "light",
+        "projection": "miller",
+
+        "panEventsEnabled": true,
+        //"backgroundColor": "#666666",
+        //"backgroundAlpha": 1,
+        "dataProvider": {
+            "map": "worldHigh",
+            "getAreasFromMap": true
+        },
+        "areasSettings": {
+            "autoZoom": false,
+            "color": "#e3e3e3",
+            "colorSolid": "#00a79d",
+            "selectedColor": "#00a79d",
+            "outlineColor": "#aaa",
+            "rollOverColor": "#88CAE7",
+            "rollOverOutlineColor": "#FFFFFF",
+            "selectable": true
+        },
+        "listeners": [ {
+            "event": "clickMapObject",
+            "method": function( event ) {
+                countries = [];
+            
+                // deselect the area by assigning all of the dataProvider as selected object
+                map.selectedObject = map.dataProvider;
+
+                // toggle showAsSelected
+                event.mapObject.showAsSelected = !event.mapObject.showAsSelected;
+
+                // bring it to an appropriate color
+                map.returnInitialColor( event.mapObject );
+
+                // let's build a list of currently selected countries
+                for ( var i in map.dataProvider.areas ) {
+                    var area = map.dataProvider.areas[ i ];
+                    if ( area.showAsSelected ) {
+                        countries.push( area.id );
+                    }
+                }
+
+                console.log(countries)
+
+                if(countries.length) {
+                    $('#customer_maps-modal .button').removeClass('button--disabled').addClass('button--green'); 
+                } else {
+                    $('#customer_maps-modal .button').removeClass('button--green').addClass('button--disabled'); 
+                }
+            }
+        } ]
+    });
+</script>
+
+<div class="account--page">
+    <h4 class="head-text">my account /</h4>
+    <h3 class="head-text">maps</h3>
+
+    {% section 'account_sidebar' %}
+
+    <div id="customer_maps" class="account--page_right">
+        <div class="map-blocks">
+            <div class="block_map block_map_new">
+                <div class="box">
+                    {{ 'map_icon.svg' | asset_url | img_tag }}
+                    <p>create a map</p>
+                    <div class="v_border"></div>
+                    <div class="h_border"></div>
+                    <div class="overlap--buttons">
+                        <div>
+                            <p>create a<br>new map</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="customer_maps-modal" class="modal" style="display: none;">
+
+    <div id="save-your-map">
+        <div class="template_header">
+            <h2 class="title">Save Your Map</h2>
+            <p>You can update saved maps as you explore more new places!</p>
+        </div>
+
+        <div id="customer-mappanel"></div>
+
+        <form id="save_your_map">
+            <div class="clearfix large_form">
+                <input type="text" value="" id="map_name" class="form-field" placeholder="name your map" />
+            </div>
+            <div class="action_bottom">
+                <a class="button button--disabled button--full">SAVE</a>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<div id="customer_maps-modal_delete" class="modal" style="display: none;">
+
+    <div id="delete-your-map">
+        <div class="template_header">
+            <h2 class="title">Delete Your Map</h2>
+        </div>
+
+        <div id="customer-mappanel"></div>
+
+        <form id="delete_your_map">
+            <div class="subject">Are you sure you want to delete the map below?</div>
+
+            <div class="clearfix large_form">
+                <span class="delete_map--name"></span>
+            </div>
+            <div class="action_bottom">
+                <a class="button button--green button--full">Delete</a>
+                <span class="note">or <a href="#" class="cancel-modal">Cancel</a></span>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+{% include 'country_list' %}
+
+<script>
+    window.map_icon_url = "{{ 'map_icon_black.svg' | asset_url }}";
+</script>

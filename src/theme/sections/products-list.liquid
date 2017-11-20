@@ -1,0 +1,16 @@
+<section class="products">
+  <h3 class="products__title">Products</h3>
+  <div class="row">
+    {% assign current_product = product %}
+    {% assign current_product_found = false %}
+    {% for product in collections.all.products limit : 5 %}
+      {% if product.handle == current_product.handle %}
+        {% assign current_product_found = true %}
+      {% else %}
+        {% unless current_product_found == false and forloop.last %}
+          {% include 'product-card-grid' %}
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>

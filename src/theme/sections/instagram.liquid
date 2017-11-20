@@ -1,0 +1,20 @@
+<section class="instagram">
+  <h2 class="instagram__title">{{section.settings.title}}</h2>
+  <p class="instagram__text">Follow us on Instagram</p>
+  <div id="insta-feed"></div>
+</section>
+
+{% schema %}
+  {
+    "name": "Instagram",
+    "settings": [
+      {
+        "id": "title",
+        "type": "text",
+        "label": "Title",
+        "default": "Get Inspired Daily"
+      }
+    ]
+  }
+{% endschema %}
+

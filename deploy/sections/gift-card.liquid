@@ -1,0 +1,45 @@
+<section class="giftcard">
+  <div class="giftcard__content">
+    <div class="giftcard__image">
+      <img src="{% if section.settings.image == blank %} {{'bg_hand_home-image.jpg' | asset_url }} {% else %} {{ section.settings.imageLeft}} {% endif %}" alt="{{ section.settings.title }}">
+    </div>
+    <div class="giftcard__image">
+      <img src="{% if section.settings.image == blank %} {{'bg_girl_home-image.jpg' | asset_url }} {% else %} {{ section.settings.imageRight }} {% endif %}" alt="{{ section.settings.title }}">
+      <div class="giftcard__image-content">
+        <h4 class="giftcard__title">{{ section.settings.title }}</h4>
+        <p class="giftcard__text">{{ section.settings.description | truncatewords:30 }}</p>
+        <a href="#" class="button button--green">Buy this</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Gift Card",
+    "settings": [
+      {
+        "id": "title",
+        "type": "text",
+        "label": "Title",
+        "default": "Single Product/Gift Card"
+      },
+      {
+        "id": "description",
+        "type": "text",
+        "label": "Description",
+        "default": "Nam porttitor blandit accumsan. Ut vel dictum sem, a pretium dui. In malesuada enim in dolor euismod, id commodo mi consectetur. Curabitur at vestibulum nisi."
+      },
+      {
+        "id": "imageLeft",
+        "type": "image_picker",
+        "label": "Left Image"
+      },
+      {
+        "id": "imageRight",
+        "type": "image_picker",
+        "label": "Right Image"
+      }
+    ]
+  }
+{% endschema %}

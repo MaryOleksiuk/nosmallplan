@@ -1,0 +1,525 @@
+
+
+//STYLES for Product
+.product {
+  display: flex;
+  flex-direction: column;
+
+  @include breakpoint(tablet) {
+    flex-direction: row;
+  }
+
+  &__content {
+    width: 100%;
+    padding: 5%;
+
+    @include breakpoint(tablet) {
+      width: 50%;
+      padding: 5% 10% 5%;
+    }
+
+    .product__image {
+      display: block;
+      width: 100%;
+      margin-bottom: 30px;
+
+      @include breakpoint(tablet) {
+        display: none;
+      }
+    }
+  }
+
+  &__title {
+    padding-bottom: 8px;
+    font-size: 28px;
+    line-height: 30px;
+    font-weight: $fw-medium;
+    color: $light-black;
+
+    @include breakpoint(tablet) {
+      font-size: 38px;
+      line-height: 40px;
+    }
+  }
+
+  &__description {
+    padding-bottom: 15px;
+    font-size: 12px;
+    line-height: 18px;
+    color: $light-black;
+
+    @include breakpoint(tablet) {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  &__price {
+    padding-bottom: 9px;
+    font-size: 16px;
+    line-height: 21px;
+    font-weight: $fw-medium;
+    color: $brown;
+    order: 2;
+
+    @include breakpoint(tablet) {
+      order: 0;
+    }
+
+    &--discount {
+      color: $light-gray;
+      text-decoration: line-through;
+      margin-right: 5px;
+    }
+  }
+
+  &__small-title {
+    padding-top: 10px;
+    font-size: 14px;
+    line-height: 25px;
+    font-weight: $fw-bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: $light-black;
+  }
+
+  &__colors {
+    padding: 10px 0;
+
+    &-item {
+      display: inline-block;
+      margin-right: 14px;
+    }
+    &-link {
+      width: 34px;
+      height: 34px;
+      display: inline-block;
+      border: 1px solid transparent;
+      border-radius: 34px;
+      text-align: center;
+
+      img {
+        width: 100%;
+      }
+
+      &:hover {
+        border: 1px solid $brown;
+      }
+    }
+  }
+
+  &__size {
+    margin-bottom: 30px;
+
+    &-text {
+      font-size: 14px;
+      line-height: 15px;
+      font-weight: $fw-bold;
+      text-transform: uppercase;
+      color: $brown;
+    }
+
+    &-link {
+      width: 34px;
+      height: 34px;
+      margin-right: 7px;
+      display: inline-block;
+      line-height: 34px;
+      text-align: center;
+      border: 1px solid transparent;
+      border-radius: 34px;
+      cursor: pointer;
+
+      &:hover {
+        border: 1px solid $brown;
+      }
+    }
+  }
+
+  &__title {
+    margin-bottom: 30px;
+
+    &-text {
+      font-size: 14px;
+      line-height: 15px;
+      font-weight: $fw-bold;
+      text-transform: uppercase;
+      color: $brown;
+    }
+
+    &-link {
+      height: 34px;
+      margin-right: 7px;
+      display: inline-block;
+      line-height: 34px;
+      text-align: center;
+      border: 1px solid transparent;
+      border-radius: 34px;
+      cursor: pointer;
+
+      &:hover {
+        border: 1px solid $brown;
+      }
+
+      &.swatch-active {
+        text-decoration: underline;
+        border: 0;
+      }
+    }
+  }
+
+  .button {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  &__image {
+    width: 50%;
+    display: none;
+
+    @include breakpoint(tablet) {
+      display: block;
+    }
+
+    &-for {
+      margin: 0;
+    }
+
+    &-item {
+      border: none;
+      margin: 0;
+      padding: 0;
+
+      img {
+        margin-bottom: 0;
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+
+  // Slick nav controls styles
+  .slick-prev {
+    top: auto;
+    bottom: 100px;
+    left: 0;
+
+    @include breakpoint(tablet) {
+      bottom: 0;
+    }
+  }
+
+  .slick-next {
+    top: auto;
+    bottom: 100px;
+    right: 0;
+
+    @include breakpoint(tablet) {
+      bottom: 0;
+      left: 45px;
+      right: auto;
+    }
+
+  }
+
+  .slick-arrow {
+    z-index: 1;
+    background-color: $light-black;
+    width: 40px;
+    height: 40px;
+    transform: translate(0, 0);
+    cursor: pointer;
+  }
+
+  &-thumbnails {
+    margin: 0;
+    display: none;
+
+    @include breakpoint(tablet) {
+      display: block;
+    }
+
+    .slick-list {
+      padding: 0 !important;
+    }
+
+    &__item {
+      display: inline-block;
+      margin-top: 14px;
+      margin-right: 35px;
+      position: relative;
+      border: none;
+      width: 117px!important;
+      height: 117px;
+      box-sizing: border-box;
+    }
+
+    &__image {
+      width: 117px;
+      height: 117px;
+    }
+
+    &__link {
+      &::after {
+        position: absolute;
+        content:"";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        background-color: $white;
+        transition: opacity .5s ease;
+      }
+
+      &:hover {
+        &::after {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
+
+.accordeon {
+  /* Acordeon styles */
+  &__tab {
+    position: relative;
+    margin-bottom: -1px;
+    width: 100%;
+    color: #fff;
+    overflow: hidden;
+
+    &-title {
+      position: relative;
+      display: block;
+      padding-left: 9px;
+      cursor: pointer;
+      border-top: 1px solid $gray-line;
+      border-bottom: 1px solid $gray-line;
+      font-size: 14px;
+      line-height: 48px;
+      font-weight: $fw-bold;
+      letter-spacing: 1px;
+      color: $light-black;
+      text-transform: uppercase;
+    }
+
+    &-content {
+      max-height: 0;
+      overflow: hidden;
+      -webkit-transition: max-height .5s;
+      -o-transition: max-height .5s;
+      transition: max-height .5s;
+    }
+
+    &-text {
+      padding: 12px 9px 24px;
+      font-size: 12px;
+      line-height: 18px;
+      color: $light-black;
+
+      @include breakpoint(tablet) {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+
+    &.accordeon__tab--map {
+      display: none;
+    }
+  }
+
+  & .accordeon__tab--map {
+    display: none;
+
+    h3 {
+      padding: 0 9px;
+      font-size: 14px;
+      line-height: 48px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #212B36;
+      text-transform: uppercase;
+    }
+
+    p {
+      padding: 0px 9px 24px;
+      font-size: 12px;
+      line-height: 18px;
+      color: #212B36;
+    }
+  }
+
+  input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  /* :checked */
+  input:checked ~ .accordeon__tab-content {
+    max-height: 11em;
+    &--maps {
+      max-height: 100%;
+    }
+  }
+
+  /* Icon */
+  label::after {
+    position: absolute;
+    right: 9px;
+    top: 0;
+    display: block;
+    font-size: 24px;
+    font-weight: $fw-regular;
+    text-align: center;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+  }
+
+  input[type=checkbox] + label::after {
+    content: "+";
+  }
+
+  input[type=checkbox]:checked + label::after {
+    content: "-";
+    color: $green;
+  }
+}
+
+.social {
+  margin-top: 21px;
+  text-align: center;
+
+  &__link {
+    margin-right: 30px;
+    color: $light-black;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}
+
+// Show off your travels block
+.image-block {
+  position: relative;
+  font-size: 0;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    max-height: 810px;
+  }
+
+  &__content {
+    max-width: 100%;
+    padding: 38px 34px 39px 39px;
+    position: static;
+    transform: translateY(0%);
+    background-color: $white;
+    border-radius: 16px;
+    color: $light-black;
+
+    @include breakpoint(tablet) {
+      position: absolute;
+      max-width: 480px;
+      width: 100%;
+      top: 50%;
+      left: 55px;
+      transform: translateY(-50%);
+      padding: 37px;
+    }
+  }
+
+  &__subtitle {
+    padding-bottom: 20px;
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: $fw-bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    padding-bottom: 20px;
+    font-family: "SaolDisplay", sans-serif;
+    font-size: 36px;
+    line-height: 45px;
+    font-weight: $fw-bold;
+    letter-spacing: 1px;
+
+    @include breakpoint(tablet) {
+      padding-bottom: 25px;
+      font-size: 56px;
+      line-height: 59px;
+    }
+  }
+
+  &__text {
+    font-size: 12px;
+    line-height: 18px;
+
+    @include breakpoint(tablet) {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+}
+
+// START STYLES Slick Slider - fix overflow when slider is loading
+.product__image-for,
+.product-thumbnails {
+   visibility: hidden;
+   opacity: 0;  
+   transition: opacity 0.1s;
+}
+
+.product__image-for.slick-initialized,
+.product-thumbnails.slick-initialized {
+  visibility: visible;
+  opacity: 1;
+}
+
+.product__image-for .product__image-item {
+  display: none ;
+}
+
+.product__image-for .product__image-item:first-child {
+  display: block; 
+  visibility: hidden;
+} 
+
+.product__image-for.slick-initialized .product__image-item {
+  display: block;
+  visibility: visible!important;
+}
+
+.slick-slide:hover,
+.slick-active {
+  opacity: 0.6;
+}
+// END STYLES Slick Slider
+
+.swatch-active {
+  border: 1px solid $brown;
+}
+
+#shopify-section-products-list .products-item__colors-link {
+  cursor: default;
+          
+  &:hover {
+    border: 1px solid transparent;
+  }
+
+}
+
+.selector-wrapper {
+  display: none;
+}

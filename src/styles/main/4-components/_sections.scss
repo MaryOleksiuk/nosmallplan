@@ -1,0 +1,82 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+
+  @include breakpoint(tablet) {
+    flex-direction: row;
+    margin-bottom: 54px;
+  }
+
+  &__image {
+    width: 100%;
+    min-height: 300px;
+    object-fit: cover;
+
+    @include breakpoint(tablet) {
+      width: 50%;
+      height: auto;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    padding: 35px 29px 47px;
+    background-color: $brown;
+    color: $gold;
+
+    @include breakpoint(tablet) {
+      width: 50%;
+      padding: 10% 5% 10% 10%;
+    }
+  }
+
+  &__title {
+    padding-bottom: 25px;
+    font-family: "SaolDisplay", sans-serif;
+    font-size: 36px;
+    line-height: 45px;
+    font-weight: $fw-bold;
+    letter-spacing: 1px;
+
+    @include breakpoint(tablet) {
+      padding-bottom: 35px;
+      font-size: 56px;
+      line-height: 59px;
+    }
+  }
+
+  &__text {
+    font-size: 12px;
+    line-height: 18px;
+
+    @include breakpoint(tablet) {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+
+  &--black {
+    .section__content {
+      color: $gold;
+    }
+  }
+
+  &--white {
+    padding-left: 29px;
+    padding-right: 29px;
+
+    .section__content {
+      padding-top: 8%;
+      padding-left: 0;
+      padding-right: 2%;
+      color: $light-black;
+      background-color: $white;
+      order: 2;
+
+      @include breakpoint(tablet) {
+        order: 0;
+      }
+    }
+  }
+}

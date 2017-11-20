@@ -1,0 +1,17 @@
+<div class="product__image">
+  <div class="product__image-for">
+    {% for image in product.images %}
+    <div class="product__image-item">
+        <img src="{{ image.src | img_url: '630x630'" alt="{{ image.alt | escape }}" draggable="false">
+    </div>
+    {% endfor %}
+  </div>
+
+  {% if product.images.size > 1 %}
+    <ul class="product-thumbnails">
+      {% for image in product.images %}
+        <li class="product-thumbnails__item"><img class="product-thumbnails__image" src="{{ image.src | img_url: '100x100' " alt="{{ image.alt | escape }}"></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>

@@ -1,0 +1,17 @@
+<div id="select-product">
+    <div class="maps__step_header">
+        <h5>2. select your product</h5>
+    </div>
+
+    <div class="collection">
+        <div class="row">
+            {% for product in collections.all.products %}
+                {% if product.handle contains 'gift' %}
+
+                {% else %}
+                    {% include 'product-card-grid', from_page: 'maps' %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

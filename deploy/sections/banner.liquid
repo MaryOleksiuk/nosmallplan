@@ -1,0 +1,30 @@
+<section class="banner">
+  {% if template == "index" %}
+    <img class="banner__image" src="{% if section.settings.image == blank %} {{'bg_home-banner.jpg' | asset_url }} {%else %} {{ section.settings.image }} {% endif %}" alt="{{ section.settings.title }}">
+  {% else %}
+    <img class="banner__image" src="{{'bg_collection.png' | asset_url }}" alt="{{ section.settings.title }}">
+  {% endif %}
+  <div class="banner__content">
+    <h1 class="banner__title">{{ section.settings.title }}</h1>
+    <a class="button button--green" href="#">Make your map</a>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Banner",
+    "settings": [
+      {
+        "id": "title",
+        "type": "text",
+        "label": "Title",
+        "default": "Where have you been?"
+      },
+      {
+        "id": "image",
+        "type": "image_picker",
+        "label": "Image"
+      }
+    ]
+  }
+{% endschema %}

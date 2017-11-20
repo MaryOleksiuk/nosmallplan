@@ -1,0 +1,17 @@
+<div class="products-item">
+  <a class="products-item__link" href="{{ product.url }}">
+    <img class="products-item__image" src="{{ product.featured_image | product_img_url: '275x275' | crop: 'center' }}" alt="{{ product.featured_image.alt | escape }}">
+    <h4 class="products-item__title">{{ product.title }}</h4>
+  </a>
+  {% for option in product.options_with_values %}
+    {% assign option_name = option.name | downcase %}
+    {% if option_name == 'color' %}
+      {% for value in option.values %}
+        <li class="products-item__colors-link" data-value="{{ value }}" data-id="{{ option_index }}">
+          <img src="{{ value | downcase | strip_newlines | strip_html | remove: '  ' | append: '.svg' | asset_url }}" width="19" height="19" alt="{{color | strip | downcase}}" title="{{value | strip | downcase}}"/>
+        </li>
+      {%endfor%}
+    {% endif %}
+  {% endfor %}
+  <p class="products-item__price">{{ product.price | money }}</p>
+</div>

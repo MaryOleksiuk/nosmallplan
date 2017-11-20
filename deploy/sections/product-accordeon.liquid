@@ -1,0 +1,50 @@
+<div class="accordeon">
+  <div class="accordeon__tab accordeon__tab--map">
+    <input id="tab-map" type="checkbox" name="tabs">
+    <label for="tab-map" class="accordeon__tab-title">Map</label>
+    <div class="accordeon__tab-content">
+      <p class="accordeon__tab-text"></p>
+    </div>
+  </div>
+
+  <div class="accordeon__tab">
+    <input id="tab-one" type="checkbox" name="tabs">
+    <label for="tab-one" class="accordeon__tab-title">Details</label>
+    <div class="accordeon__tab-content">
+      <p class="accordeon__tab-text">
+        {% assign my_value = product.metafields.sf_details.details %}
+        {% if my_value %}
+          {{ my_value }}
+        {% endif %}
+      </p>
+    </div>
+  </div>
+
+  <div class="accordeon__tab">
+    <input id="tab-two" type="checkbox" name="tabs">
+    <label for="tab-two" class="accordeon__tab-title">Size &amp; Fit</label>
+    <div class="accordeon__tab-content">
+      <p class="accordeon__tab-text">
+        {% assign my_value = product.metafields.sf_details.size___fit %}
+        {% if my_value %}
+          {{ my_value }}
+        {% endif %}
+      </p>
+    </div>
+  </div>  
+
+  <div class="accordeon__tab">
+    <input id="tab-three" type="checkbox" name="tabs">
+    <label for="tab-three" class="accordeon__tab-title">Composition</label>
+    <div class="accordeon__tab-content">
+      <p class="accordeon__tab-text">
+        {% assign my_value = product.metafields.sf_details.composition %}
+        {% if my_value %}
+          {{ my_value }}
+        {% endif %}
+      </p>
+    </div>
+  </div>
+
+  {% include 'social-icons' %}
+</div>

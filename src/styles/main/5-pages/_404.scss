@@ -1,0 +1,47 @@
+// Styles for 404 page
+.error {
+  &__content {
+    padding: 146px 0 185px;
+    text-align: center;
+
+    @include breakpoint(tablet) {
+      padding: 118px 0 157px;
+    }
+  }
+
+  &__image {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
+  &__text {
+    margin: 12px 0;
+    font-size: 9px;
+    line-height: 12px;
+    font-weight: $fw-bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $light-black;
+
+    @include breakpoint(tablet) {
+      margin: 25px 0;
+      font-size: 18px;
+      line-height: 25px;
+    }
+  }
+
+  &__title {
+    font-family: $font-family--titles;
+    font-size: 135px;
+    line-height: 135px;
+    font-weight: $fw-bold;
+    letter-spacing: 7px;
+    color: $light-black;
+
+    @include breakpoint(tablet) {
+      font-size: 264px;
+      line-height: 240px;
+    }
+  }
+}

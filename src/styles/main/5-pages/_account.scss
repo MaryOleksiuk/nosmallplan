@@ -1,0 +1,379 @@
+.container--account {
+	position: relative;
+    width: 95%;
+    max-width: 1170px;
+    margin: 120px auto;
+    padding: 0 20px;
+
+	@media (max-width: $mobile) {
+		margin: 20px auto;
+	}
+
+    .modal {
+    	max-width: 44%;
+	    border-radius: 0px;
+	    -webkit-box-shadow: none;
+	    -moz-box-shadow: none;
+	    -o-box-shadow: none;
+	    -ms-box-shadow: none;
+	    box-shadow: none;
+	    vertical-align: top;
+	    padding: 0;
+
+	    @media (max-width: $mobile) {
+	        padding: 40px 0;
+	        height: 100%;
+	        width: 100%;
+	        max-width: 100%;
+	        position: static;
+	    }
+
+	    &:nth-child(1) {
+	    	border-bottom: 1px solid #ebebeb;
+	    }
+
+	    .subject {
+	    	line-height: 1.5rem;
+	    }
+
+	    input[type="checkbox"] {
+	    	width: auto;
+	    	margin-right: 7px;
+	    }
+
+	    .errors {
+	    	display: block;
+	    	line-height: 1.4;
+	    }
+    }
+
+    .v--linebox {
+    	width: 1px !important;
+    	background-color: #cbcbcb;
+    	height: 540px;
+    	display: inline-block;
+    	margin: 0 5%;
+
+    	@media (max-width: $mobile) {
+    		display: none;
+    	}
+    }
+}
+
+.account--page {
+	width: 100%;
+	max-width: 1140px;
+	margin: 120px auto 200px auto;
+	min-height: 80vh;
+
+	@media (max-width: $medium) {
+		width: 90%;
+		max-width: 990px;
+		margin: 50px auto 100px auto;
+		min-height: 50vh;
+	}
+
+	& > h3 {
+		text-transform: capitalize;
+		margin-bottom: 60px;
+		font-weight: 700;
+	}
+
+	& > h4 {
+		text-transform: uppercase;
+		font-weight: 700;
+    	font-size: 1.1rem;
+    	margin-bottom: 10px;
+	}
+
+	& #shopify-section-account_sidebar {
+		width: 30%;
+		display: inline-block;
+		vertical-align: top;
+
+		@media (max-width: $mobile) {
+			display: none;
+		}
+
+		& #customer_detail {
+			max-width: 60%;
+
+			& ul {
+				list-style: none;
+				margin: 0;
+				padding: 0;		
+
+				& li {
+					list-style: none;
+					margin: 0;
+					padding: 12px 0;
+
+					& a {
+						color: #212b36;
+						text-transform: uppercase;
+						letter-spacing: 1px;
+						font-weight: 700;
+						font-size: 14px;
+						outline: none;
+
+						&.active {
+							text-decoration: underline;
+						}
+
+						&:hover {
+							text-decoration: underline;
+						}
+					}
+				}
+			}
+
+			a.account--logout {
+				font-size: 0.8rem;
+			}
+		}
+	}
+
+	& .account--page_right {
+		width: 69%;
+		display: inline-block;
+		vertical-align: top;
+
+		@media (max-width: $mobile) {
+			width: 100%;
+		}
+
+		& .block {
+			position: relative;
+
+			& h4 {
+				color: #212b36;
+				text-transform: uppercase;
+				font-weight: 700;
+				padding: 15px 0;
+				font-size: 1.15rem;
+				letter-spacing: 1px;
+			}
+
+			& ul {
+				padding-top: 5px;
+
+				& li {
+					padding: 7px 0;
+				}
+			}
+
+			&#block--account li:nth-child(1) {
+				text-transform: capitalize;
+			}
+
+			& .actions {
+				position: absolute;
+				top: 3px;
+				right: 0;
+
+				& .button {
+					width: auto;
+					padding: 0 30px;
+					background: #fff;
+					font-size: 0.9rem;
+					line-height: 40px;
+
+					&:hover {
+						color: $white;
+  						background-color: $green;
+					}
+				}
+
+				& a {
+					width: auto;
+					padding: 0 30px;
+					background: #fff;
+					font-size: 0.9rem;
+					line-height: 40px;
+					display: block;
+					font-weight: 700;
+					text-align: center;
+					text-transform: uppercase;
+					color: #CBCBCB;
+					cursor: pointer;
+					outline: none;
+					border: 1px solid #CBCBCB;
+					-webkit-transition: all 0.5s ease;
+					transition: all 0.5s ease;
+					margin-bottom: 10px;
+
+					&:hover {
+						color: $white;
+  						background-color: $green;
+					}
+				}
+			}
+		}
+
+		& > .actions {
+
+			& .button {
+				width: auto;
+				padding: 0 30px;
+				background: #fff;
+				font-size: 0.9rem;
+				line-height: 40px;
+
+				&:hover {
+					color: $white;
+					background-color: $green;
+				}
+			}
+		}
+
+		&#address_tables {
+			@media (max-width: $mobile) {
+				margin-top: -30px;
+			}
+		}
+
+		& .customer_address.edit_address {
+			border: 1px solid #d7d7d7;
+			padding: 30px 60px;
+			margin-bottom: 50px;
+
+			@media (max-width: $mobile) {
+				padding: 20px;
+			}
+
+			& h4 {
+				color: #212b36;
+				text-transform: uppercase;
+				font-weight: 700;
+				padding: 15px 0;
+				font-size: 1.15rem;
+				letter-spacing: 1px;
+			}
+
+			& table {
+				width: 100%;
+
+				& input[type="text"], & input[type="email"], & input[type="password"] {
+			        width: 100%;
+
+		            background: #f5f5f5;
+		            border: 1px solid #f5f5f5;
+		            padding: 12px;
+		            font-size: 0.9rem;
+		            margin: 8px 0;
+
+		            &:focus {
+		                outline: none;
+		                border: 1px solid #dedede;
+		            }
+
+		            &::placeholder {
+		                color: #212b36;
+		            }
+			    }
+
+			    & select {
+					width: 100%;
+				    background: #f5f5f5;
+				    border: 1px solid #f5f5f5;
+				    font-size: 0.9rem;
+				    margin: 8px 0;
+				    -webkit-appearance: menulist-button;
+				    height: 45px;
+			    }
+
+			    & td.set--default_cls_chk {
+			    	padding: 15px 0;
+			    	font-size: 0.9rem;
+
+			    	& input {
+			    		margin-right: 10px;
+			    	}
+			    }
+			}
+
+			& .action_bottom {
+				margin-top: 20px;
+
+				& .button {
+					width: auto;
+					padding: 0 30px;
+					background: #fff;
+					font-size: 0.9rem;
+					line-height: 40px;
+					display: inline-block;
+					margin-right: 20px;
+
+					&:hover {
+						color: $white;
+						background-color: $green;
+					}
+				}
+			}
+		}
+
+		& table.account--orders_list {
+			width: 100%;
+
+			& thead {
+				font-weight: bold;
+				color: #212b36;
+				text-align: left;
+
+				& th {
+					padding: 15px 0;
+					border-bottom: 1px solid #d7d7d7;
+				}
+			}
+
+			& tr {
+				& td {
+					padding: 15px 0;
+					border-bottom: 1px solid #d7d7d7;
+
+					& a {
+						text-decoration: underline;
+					}
+				}
+
+
+				&:last-child {
+					& td {
+						border: none;
+					}
+				}
+			}
+		}
+
+		& #admin_header {
+			.title {
+				padding: 20px 0;
+			}
+		}
+
+		& .note.order_date {
+			padding-bottom: 20px;
+		}
+
+
+	}
+
+	.head-text {
+		color: #212b36;
+	}
+
+	.h-divider-line {
+		height: 1px !important;
+		background-color: #d7d7d7;
+		width: 100%;
+		margin: 40px 0;
+	}
+}
+
+body.has-opened-modal {
+  position: fixed !important;
+  width: 100%;
+  height: 100%;
+}
+
+

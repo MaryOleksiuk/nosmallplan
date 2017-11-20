@@ -1,0 +1,6 @@
+// Breakpoints
+$breakpoints: (
+  tablet      : em(768, 16),
+  desktop     : em(1024, 16),
+  hd          : em(1440, 16)
+);

@@ -1,0 +1,78 @@
+// STYLES for About Us page
+.about-us {
+  &__banner {
+    position: relative;
+
+    &-content {
+      display: none;
+
+      @include breakpoint(tablet) {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &-image {
+      width: 100%;
+    }
+
+    &-title {
+      font-family: "SaolDisplay", sans-serif;
+      font-size: 74px;
+      line-height: 45px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-align: center;
+      line-height: 45px;
+      color: $white;
+    }
+  }
+
+  &__description {
+    padding: 35px 20px 40px;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 1440px;
+
+    @include breakpoint(tablet) {
+      padding: 98px 20px 78px;
+      width: 55%;
+    }
+
+    &-title {
+      padding-bottom: 38px;
+      font-size: 36px;
+      line-height: 45px;
+      letter-spacing: 1px;
+      font-weight: "SaolDisplay", sans-serif;
+
+      @include breakpoint(tablet) {
+        display: none;
+      }
+    }
+
+    &-text {
+      width: 100%;
+      margin: 0 auto;
+      font-size: 12px;
+      line-height: 18px;
+      color: $light-black;
+
+      @include breakpoint(tablet) {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+  }
+  .section {
+    @include breakpoint(tablet) {
+      max-height: 70vw;
+    }
+    @include breakpoint(desktop) {
+      max-height: 50vw;
+    }
+  }
+}

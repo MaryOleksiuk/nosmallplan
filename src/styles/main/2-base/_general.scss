@@ -1,0 +1,132 @@
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::before {
+  box-sizing: inherit;
+}
+
+::selection {
+  background: $green;
+  color: $white;
+}
+
+body {
+  padding-top: $header-height;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+}
+
+.is-hidden {
+  position: absolute;
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+svg[class^="icon-"] {
+  fill: currentColor;
+  stroke: none;
+  max-width: 100%;
+}
+
+.button {
+  width: 277px;
+  height: 48px;
+  display: block;
+  padding: 0;
+  font-size: 18px;
+  font-weight: $fw-bold;
+  line-height: 48px;
+  text-align: center;
+  text-transform: uppercase;
+  color: $light-gray;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid $light-gray;
+  transition: all 0.5s ease;
+
+  &:hover {
+    color: $light-black;
+  }
+}
+
+.button--green {
+  border: none;
+  color: $white;
+  background-color: $green;
+
+  &:hover {
+    background-color: lighten($green, 10%);
+    color: $white;
+  }
+}
+
+.button--disabled {
+  border-color: #dedede;
+  color: #cbcbcb;
+  background-color: #fbfbfb;
+  cursor: default;
+  pointer-events: none;
+}
+
+.button--full {
+  width: 100%;
+  border-radius: 0;
+}
+
+.button-checkout {
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+.c-mask {
+  position: fixed;
+  z-index: 100;
+  top: -98px;
+  left: 0;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  background-color: $green;
+  opacity: 0;
+  transition: opacity 0.3s, width 0s 0.3s, height 0s 0.3s;
+}
+
+.c-mask.is-active {
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.content-wrap {
+  min-height: 100%;
+  min-width: 100%;
+  flex: 1 0 auto;
+  background-color: $white;
+  position: relative;
+  top: 0;
+  bottom: 100%;
+  left: 0;
+  transition: all 0.5s;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.display-none {
+  display: none;
+}
+
+td {
+  padding-right: 15px;
+  padding-top: 10px;
+}

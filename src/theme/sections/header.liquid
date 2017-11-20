@@ -1,0 +1,37 @@
+{% if section.settings.infobar_enable %}
+  <div class="infobar">
+    <p class="infobar__text">
+      {{ section.settings.infobar_text }}
+    </p>
+    <a href="javascript:void(0);" class="button-close"><i class="fa fa-times" aria-hidden="true"></i></a>
+  </div>
+{% endif %}
+<header class="header header--{{template}} js-header" role="banner">
+  <a href="{{shop.url}}" class="header__logo-image">
+    <img {% if template == "index" %} src="{{'logo_white.svg' | asset_url }}" {% else %} src="{{'logo_color.svg' | asset_url }}" {% endif %}  alt="No Small Plan"> 
+    <img class="header-sticky-image" src="{{'logo_color.svg' | asset_url }}" alt="">
+  </a>
+  
+  {% include 'navigation' %}
+</header>
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "infobar_enable",
+        "label": "Enable Infobar"
+      },
+      {
+        "type": "text",
+        "id": "infobar_text",
+        "label": "Please enter Infobar text"
+      }
+    ]
+  }
+{% endschema %}
+
+
+

@@ -1,0 +1,36 @@
+.instagram {
+  height: 290px;
+  padding: 23px 0 48px;
+  background-color: $cod-gray;
+  overflow: hidden;
+
+  @include breakpoint(tablet) {
+    height: 270px;
+  }
+
+  &__title {
+    padding: 0 0 7px 29px;
+    font-size: 24px;
+    line-height: 46px;
+    font-weight: $fw-medium;
+    color: $light-black;
+
+    @include breakpoint(tablet) {
+      padding: 0 0 25px 88px;
+      font-size: 36px;
+    }
+  }
+
+  &__text {
+    padding: 0 0 17px 29px;
+    font-size: 11px;
+    line-height: 15px;
+    font-weight: $fw-bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    @include breakpoint(tablet) {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,73 @@
+@import "modularscale-sass";
+// =======================================
+// =            Global Config            =
+// =======================================
+
+// Typography
+$system-fonts: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+$font-family--primary: 'Raleway', sans-serif;
+$font-family--titles: 'SaolDisplay', sans-serif;
+
+// Text
+$base-font-size: 1em;
+$base-line: 1.3;
+
+// Modular Scale - https://github.com/modularscale/modularscale-sass/tree/3.x
+$ms-base:  1rem;
+$ms-ratio: $major-third;
+
+// Stuff for the BassCss-like classes
+$total-stops: 5;
+
+// Typographic Weights
+$fw-thin: 100;
+$fw-extra-light: 200;
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semi-bold: 600;
+$fw-bold: 700;
+$fw-extra-bold: 800;
+$fw-ultra-bold: 900;
+
+// Colors
+$white: #FFFFFF;
+$black: #4A4A4A;
+$light-black: #212B36;
+$cod-gray: #F9F9F9;
+$s-gray: #F5F5F5;
+$f8-gray: #F8F8F8;
+$d-gray: #DDDDDD;
+$gray: #797E83;
+$light-gray: #CBCBCB;
+$dark-gray: #B2B2B2;
+$gray-line: #E3E3E3;
+$border-gray: #979797;
+$green: #00A79D;
+$orange: #EC7024;
+$blue: #2BA5E0;
+$dark-blue: #002856;
+$light-blue: #17457B;
+$gold: #E8D9A0;
+$brown: #393D3F;
+
+$main-color: $orange;
+
+// Transitions
+$trns-duration: .2s;
+$sexy-bezier: cubic-bezier(0,0,0,2.41);
+$sexy-transition: $trns-duration $sexy-bezier;
+
+// Grid
+$column-gutter: 20px;
+$columns--total: 12;
+
+@import "breakpoints";
+
+//Hamburger menu
+$hamburger-width: 28px;
+$hamburger-height: 22px;
+$hamburger-line-width: 2px;
+$hamburger-background-color: transparent;
+$hamburger-line-color: #000;
+$hamburger-animation-speed: 150ms;

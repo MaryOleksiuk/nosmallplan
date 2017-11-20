@@ -1,0 +1,34 @@
+{% layout 'customer' %}
+
+<div class="account--page">
+    <h3 class="head-text">Hi {{ customer.name }},</h3>
+
+    {% section 'account_sidebar' %}
+
+    <div id="customer_orders" class="account--page_right">
+        <div id="add_address" class="customer_address edit_address">
+            <form method="put" id="update-profile" action="https://2c9ee8440fc90efa56f24612d412aebe:9cc6e2f72a5a6e91b37b74bb16f1cffa@{{ shop.url | remove: 'https://' }}/admin/customers/{{customer.id}}.json" accept-charset="UTF-8">
+                <input type="hidden" id="customer_id" value="{{customer.id}}" />
+
+                <h4 id="add_address_title">Update Profile</h4>
+                <table class="customer_address_table">
+                    <tr>
+                        <td class="label"><label for="address_first_name_new">First Name</label></td>
+                        <td class="value"><input placeholder="First Name" type="text" name="first_name" id="first_name" class="large" size="30" value="{{customer.first_name}}" /></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label for="address_last_name_new">Last Name</label></td>
+                        <td class="value"><input placeholder="Last Name" type="text" name="last_name" id="last_name" class="large" size="30" value="{{customer.last_name}}" /></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label for="address_company_new">Email</label></td>
+                        <td class="value"><input placeholder="Your Email" type="email" name="email" id="email" class="large" size="30" value="{{ customer.email }}" /></td>
+                    </tr>
+                </table>
+                <div class="action_bottom">
+                    <input class="button" type="submit" value="Update" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

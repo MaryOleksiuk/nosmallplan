@@ -1,0 +1,90 @@
+<meta itemprop="name" content="{{ product.title }}">
+<meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+<meta itemprop="image" content="{{ product.featured_image.src }}">
+
+{% include 'country_list' %}
+
+<section class="product">
+  <div class="product__content">
+    {% include 'product-details' %}
+    <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
+
+      {% if product.available and product.variants.size > 0 %}
+        {% include 'product-color-swatches' %}
+        {% include 'product-size-swatches' %}
+      {% endif %}
+
+      <a class="button button--green button--add_your_map">Add your map</a>
+      <input type="hidden" value="" id="map_id_lineitem" name="properties[map_id_lineitem]" />
+      <input type="hidden" value="" id="map_name_lineitem" name="properties[map_name_lineitem]" />
+      <input type="hidden" value="" id="map_countries_lineitem" name="properties[map_countries_lineitem]" />
+    
+      {% if product.available %}
+        <button type="submit" class="button button--disabled" id="add-to-cart">Add to Cart</button>
+      {% else %}
+        <button type="submit" class="button" data-variant-id="{{ product.id }}" disabled="disabled">Sold Out</button>
+      {% endif %}
+
+      <div> 
+      {% if product.variants.size > 1 %} 
+        <select id="product-select" name="id" style="display: none;">
+        {% for variant in product.variants %}
+          {% if variant.available %} 
+            <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }}</option>
+          {% else %}
+              <option disabled="disabled">{{ variant.title }} - sold out!</option>
+          {% endif %}
+        {% endfor %}
+        </select>
+      {% else %}
+        <input type="hidden" id="product-select" name="id" value="{{ product.id }}" /> 
+      {% endif %}
+      </div>
+    </form>
+
+    {% section 'product-accordeon' %}
+
+  </div>
+
+  {% include 'product-slider' %}
+
+  <script>
+    // <![CDATA[
+
+    window.product_json = {{ product | json }};
+    var selectCallback = function(variant, selector) {
+      if (variant) {
+        if (variant.available) {
+          // Selected a valid variant that is available.
+          $('#add-to-cart').removeAttr('disabled').text('Add to Cart').fadeTo(200,1);
+        } else {
+          // Variant is sold out.
+          $('#add-to-cart').text('Sold Out').attr('disabled', 'disabled').fadeTo(200,0.5);
+        }
+        // Whether the variant is in stock or not, we can update the price and compare at price.
+        if ( variant.compare_at_price > variant.price ) {
+          $('.product__price--full').html(Shopify.formatMoney(variant.price, ""));
+          $('.product__price--discount').html(Shopify.formatMoney(variant.compare_at_price, ""));
+        } else {
+          $('.product__price--full').html(Shopify.formatMoney(variant.price, ""));
+        }
+      } else {
+        // variant doesn't exist.
+        $('#add-to-cart').text('Unavailable').attr('disabled', 'disabled').fadeTo(200,0.5);
+      }
+    }
+
+    // ]]>
+  </script>
+
+</section>
+
+{% section 'products-list' %}
+
+{% include 'product-text-banner' %}
+
+{% section 'instagram' %}
+
+{% section 'load_maps' %}
+
+

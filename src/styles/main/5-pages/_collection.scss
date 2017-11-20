@@ -1,0 +1,118 @@
+// STYLES for Collection 
+.collection {
+  padding: 18px 29px 60px;
+
+  @include breakpoint(tablet) {
+    padding: 18px 89px 60px;
+  }
+
+  .row {
+    align-items: end;
+  }
+
+  .products-item {
+    margin-bottom: 31px;
+    width: 50%;
+    float: left;
+
+    @include breakpoint(tablet) {
+      width: 32%;
+      margin-right: 1%;
+      float: none;
+      order: 2;
+    }
+
+    &:first-of-type {
+      @include breakpoint(tablet) {
+        margin-left: 1%;
+        order: 0;
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+    }
+
+    &:nth-last-child(1),
+    &:nth-last-child(2) {
+      display: block;
+    }
+
+    &:nth-last-child(1) {
+      @include breakpoint(tablet) {
+        margin-right: 0;
+      }
+    }
+
+    &__colors-link {
+      cursor: default;
+
+      &:hover {
+        border: 1px solid transparent;
+      }
+    }
+  }
+
+  #shopify-section-banner {
+    display: block;
+    width: 100%;
+    order: 1;
+
+    @include breakpoint(tablet) {
+      width: 66%;
+      order: 1;
+    }
+  }
+
+  .banner {
+    display: block;
+    top: 0;
+
+    @include breakpoint(tablet) {
+      width: 100%;
+      max-height: 466px;
+      margin-bottom: 31px;
+    }
+
+    &__title {
+      @include breakpoint(tablet) {
+        font-size: 60px;
+        line-height: 58px;
+      }
+    }
+
+    &__image {
+      height: auto;
+      min-height: 324px;
+
+      @include breakpoint(tablet) {
+        height: 100%;
+      }
+    }
+  
+    &__content {
+      width: 100%;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -40%);
+      text-align: center;
+      padding: 0 15px;
+
+      @include breakpoint(tablet) {
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .button {
+        margin: 0 auto;
+
+        &--green {
+          width: 90%;
+          max-width: 277px;
+
+          @include breakpoint(tablet) {
+            width: 277px;
+          }
+        }
+      }
+    }
+  }
+}

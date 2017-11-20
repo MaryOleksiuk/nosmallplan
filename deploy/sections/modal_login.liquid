@@ -1,0 +1,117 @@
+{% if customer %}
+	<div id="signin-modal" class="modal" style="display: none;">
+
+		<div id="save-your-map">
+			<div class="template_header">
+			  	<h2 class="title">Save Your Map</h2>
+			  	<p>You can update saved maps as you explore more new places!</p>
+			</div>
+
+			<form id="save_your_map">
+				<div class="errors"></div>
+
+				<div class="subject">name your map</div>
+
+				<div class="clearfix large_form">
+					<input type="text" value="" id="map_name" class="form-field" placeholder="name your map" />
+				</div>
+				<div class="action_bottom">
+					<input class="button button--green" type="button" value="SAVE" />
+				</div>
+			</form>
+		</div>
+
+	</div>
+{% else %}
+	<div id="signin-modal" class="modal" style="display: none;">
+
+		<div id="customer">
+			<div class="template_header">
+				<h2 class="title">Oops..Looks like you aren't logged in.</h2>
+			</div>
+
+		    {% form 'customer_login' %}
+				<div class="errors"></div>
+
+				<div class="subject">sign in with email</div>
+
+				<div id="login_email" class="clearfix large_form">
+					<input type="email" value="" name="customer[email]" id="customer_email" class="form-field" placeholder="Enter your e-mail" />
+				</div>
+
+		      	{% if form.password_needed %}
+
+			        <div id="login_password" class="clearfix large_form">
+			          	<input type="password" value="" name="customer[password]" id="customer_password" class="form-field" placeholder="Your Account Password" />
+			          	<div class="note">
+			            	<a href="#" id="forgot_password">Forgot Password?</a>
+			          	</div>
+			        </div>
+
+		      	{% endif %}
+
+		      	<div class="action_bottom">
+		        	<input class="button button--green" type="submit" value="Sign In" />
+		        	<span class="note"><a href="#" id="register-account">Don't have an account?</a></span>
+		      	</div>
+		    {% endform %}
+		</div>
+
+		{% comment %}
+			Recover Password Form
+		{% endcomment %}
+
+		<div id="recover-password" style='display:none'>
+			<div class="template_header">
+			  	<h2 class="title">Reset Password</h2>
+			  	<p>We will send you an email to reset your password.</p>
+			</div>
+
+			{% form 'recover_customer_password' %}
+			  	<div class="errors"></div>
+
+				<div class="clearfix large_form">
+					<input type="email" value="" name="email" id="recover_email" class="form-field" placeholder="Email" />
+				</div>
+				<div class="action_bottom">
+					<input class="button button--green" type="submit" value="Submit" />
+					<span class="note">or <a href="#" id="cancel-forgot">Cancel</a></span>
+				</div>
+			{% endform %}
+		</div>
+
+		<!-- Create Customer -->
+		<div id="create-customer" style='display:none'>
+			<div class="template_header">
+				<h2 class="title">Create Account</h2>
+			</div>
+
+		{% form 'create_customer' %}
+
+			<div class="clearfix large_form">
+				<input type="text" value="" name="customer[first_name]" id="first_name" class="form-field" placeholder="First Name" required />
+			</div>
+
+			<div class="clearfix large_form">
+				<input type="text" value="" name="customer[last_name]" id="last_name" class="form-field" placeholder="Last Name" required />
+			</div>
+
+			<div class="clearfix large_form">
+				<input type="email" value="" name="customer[email]" id="email" class="form-field" placeholder="Email Address" required />
+			</div>
+
+			<div class="clearfix large_form">
+				<input type="password" value="" name="customer[password]" id="password" class="password form-field" placeholder="Password" required />
+			</div>
+
+			<div class="action_bottom">
+				<input class="button button--green" type="submit" value="Create" />
+				<span class="note"><a href="#" id="return-signin">Return to Sign in</a></span>
+			</div>
+		{% endform %}
+		</div>
+		<!-- /#create-customer -->
+
+	</div>
+
+{% endif %}

@@ -1,0 +1,216 @@
+{% if customer %}
+	<div id="signin-modal" class="modal" style="display: none;">
+
+		<div id="save-your-map">
+			<div class="template_header">
+			  	<h2 class="title">{{section.settings.logged}}</h2>
+			  	<p>{{section.settings.logged_sub}}</p>
+			</div>
+
+			<form id="save_your_map">
+				<div class="errors"></div>
+
+				<div class="subject">{{section.settings.logged_placeholder}}</div>
+
+				<div class="clearfix large_form">
+					<input type="text" value="" id="map_name" class="form-field" placeholder="{{section.settings.logged_placeholder}}" />
+				</div>
+				<div class="action_bottom">
+					<a class="button button--green button--full">{{section.settings.logged_btn}}</a>
+				</div>
+			</form>
+		</div>
+
+	</div>
+{% else %}
+	<div id="signin-modal" class="modal" style="display: none;">
+
+		<div id="customer">
+			<div class="template_header">
+				<h2 class="title">{{section.settings.nonlogged}}</h2>
+			</div>
+
+		    {% form 'customer_login' %}
+				<div class="errors"></div>
+
+				<div class="subject">{{section.settings.nonlogged_sub}}</div>
+
+				<div id="login_email" class="clearfix large_form">
+					<input type="email" value="" name="customer[email]" id="customer_email" class="form-field" placeholder="Enter your e-mail" />
+				</div>
+
+		      	{% if form.password_needed %}
+
+			        <div id="login_password" class="clearfix large_form">
+			          	<input type="password" value="" name="customer[password]" id="customer_password" class="form-field" placeholder="Your Account Password" />
+			          	<div class="note">
+			            	<a href="#" id="forgot_password">{{section.settings.forgot}}</a>
+			          	</div>
+			        </div>
+
+		      	{% endif %}
+
+		      	<div class="action_bottom">
+		        	<a class="button button--green button--full" id="btn_modal_signin">{{section.settings.signin_btn}}</a>
+		        	<span class="note"><a href="#" id="register-account">{{section.settings.register}}</a></span>
+		      	</div>
+		    {% endform %}
+		</div>
+
+		{% comment %}
+			Recover Password Form
+		{% endcomment %}
+
+		<div id="recover-password" style='display:none'>
+			<div class="template_header">
+			  	<h2 class="title">{{section.settings.reset}}</h2>
+			  	<p>{{section.settings.reset_sub}}</p>
+			</div>
+
+			{% form 'recover_customer_password' %}
+			  	<div class="errors"></div>
+
+				<div class="clearfix large_form">
+					<input type="email" value="" name="email" id="recover_email" class="form-field" placeholder="Email" />
+				</div>
+				<div class="action_bottom">
+					<a class="button button--green button--full" id="btn_modal_recover_pwd">{{section.settings.reset_btn}}</a>
+					<span class="note">or <a href="#" id="cancel-forgot">Cancel</a></span>
+				</div>
+			{% endform %}
+		</div>
+
+		<!-- Create Customer -->
+		<div id="create-customer" style='display:none'>
+			<div class="template_header">
+				<h2 class="title">{{section.settings.create}}</h2>
+			</div>
+
+		{% form 'create_customer' %}
+
+			<div class="clearfix large_form">
+				<input type="text" value="" name="customer[first_name]" id="first_name" class="form-field" placeholder="First Name" required />
+			</div>
+
+			<div class="clearfix large_form">
+				<input type="text" value="" name="customer[last_name]" id="last_name" class="form-field" placeholder="Last Name" required />
+			</div>
+
+			<div class="clearfix large_form">
+				<input type="email" value="" name="customer[email]" id="email" class="form-field" placeholder="Email Address" required />
+			</div>
+
+			<div class="clearfix large_form">
+				<input type="password" value="" name="customer[password]" id="password" class="password form-field" placeholder="Password" required />
+			</div>
+
+			<div class="action_bottom">
+				<a class="button button--green button--full" id="btn_modal_create_customer">{{section.settings.create_btn}}</a>
+				<span class="note"><a href="#" id="return-signin">{{section.settings.create_return}}</a></span>
+			</div>
+		{% endform %}
+		</div>
+		<!-- /#create-customer -->
+
+	</div>
+
+{% endif %}
+
+
+{% schema %}
+  {
+    "name": "Login modal",
+    "settings": [
+      {
+        "id": "nonlogged",
+        "type": "text",
+        "label": "Title for non logged users",
+        "default": "Oops..Looks like you aren't logged in."
+      },
+      {
+        "id": "nonlogged_sub",
+        "type": "text",
+        "label": "Subtitle for non logged users",
+        "default": "sign in with email"
+      },      
+      {
+        "id": "signin_btn",
+        "type": "text",
+        "label": "Sign in button",
+        "default": "Sign In"
+      },
+      {
+        "id": "forgot",
+        "type": "text",
+        "label": "Forgot password link text",
+        "default": "Forgot Password?"
+      },
+      {
+        "id": "register",
+        "type": "text",
+        "label": "Registration link text",
+        "default": "Don't have an account?"
+      },
+      {
+        "id": "reset",
+        "type": "text",
+        "label": "Reset password modal title",
+        "default": "Reset Password"
+      },
+      {
+        "id": "reset_btn",
+        "type": "text",
+        "label": "Reset button text",
+        "default": "Submit"
+      },
+      {
+        "id": "reset_sub",
+        "type": "text",
+        "label": "Reset subtitle",
+        "default": "We will send you an email to reset your password."
+      },
+      {
+        "id": "create",
+        "type": "text",
+        "label": "Create account title",
+        "default": "We will send you an email to reset your password."
+      },
+      {
+        "id": "create_btn",
+        "type": "text",
+        "label": "Create account button",
+        "default": "Create"
+      },
+      {
+        "id": "logged",
+        "type": "text",
+        "label": "Title for logged users",
+        "default": "Save Your Map"
+      },
+      {
+        "id": "logged_sub",
+        "type": "text",
+        "label": "Subtitle for logged users",
+        "default": "You can update saved maps as you explore more new places!"
+      },
+      {
+        "id": "logged_placeholder",
+        "type": "text",
+        "label": "Placeholder for logged users",
+        "default": "name your map"
+      },
+      {
+        "id": "logged_btn",
+        "type": "text",
+        "label": "Button text for logged users",
+        "default": "SAVE"
+      },
+      {
+        "id": "create_return",
+        "type": "text",
+        "label": "Return link text for logged users",
+        "default": "Return to Sign in"
+      }
+    ]
+  }
+{% endschema %}

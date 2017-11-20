@@ -1,0 +1,103 @@
+<div class="maps__step_header">
+    <h5>1. create your map</h5>
+</div>
+
+<!-- Resources -->
+<script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+<script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+
+<script>
+    var countries = [];
+
+    var map = AmCharts.makeChart( "mappanel", {
+        "type": "map",
+        "theme": "light",
+        "projection": "miller",
+
+        "panEventsEnabled": true,
+        //"backgroundColor": "#666666",
+        //"backgroundAlpha": 1,
+        "dataProvider": {
+            "map": "worldLow",
+            "getAreasFromMap": true
+        },
+        "areasSettings": {
+            "autoZoom": false,
+            "color": "#e3e3e3",
+            "colorSolid": "#00a79d",
+            "selectedColor": "#00a79d",
+            "outlineColor": "#aaa",
+            "rollOverColor": "#88CAE7",
+            "rollOverOutlineColor": "#FFFFFF",
+            "selectable": true
+        },
+        "listeners": [ {
+            "event": "clickMapObject",
+            "method": function( event ) {
+                countries = [];
+            
+                // deselect the area by assigning all of the dataProvider as selected object
+                map.selectedObject = map.dataProvider;
+
+                // toggle showAsSelected
+                event.mapObject.showAsSelected = !event.mapObject.showAsSelected;
+
+                // bring it to an appropriate color
+                map.returnInitialColor( event.mapObject );
+
+                // let's build a list of currently selected countries
+                
+                $('.country_list-body li input[type="checkbox"]').prop('checked', false);
+                for ( var i in map.dataProvider.areas ) {
+                    var area = map.dataProvider.areas[ i ];
+                    if ( area.showAsSelected ) {
+                        countries.push( area.id );
+
+                        $('.country_list-body li[data-code="' + area.id + '"] input[type="checkbox"]').prop('checked', true);
+                    }
+                }
+
+                // active continent tab
+                // console.log(event.mapObject);
+                if(event.mapObject.showAsSelected) {
+                    var area = $('.country_list-body li[data-code="' + event.mapObject.id + '"]').data('area');
+                    $('.country_list-header li[data-rel="' + area + '"]').addClass('active');
+                    $('.country_list-body ul').hide();
+                    $('.country_list-body ul.area-' + area).show();
+                    $('.country_list-body li[data-code="' + event.mapObject.id + '"] input').focus();
+                }
+            
+                console.log(countries)
+            
+                if(countries.length) {
+                    $('.maps__buttons_save').removeClass('button--disabled').addClass('button--green'); 
+                } else {
+                    $('.maps__buttons_save').removeClass('button--green').addClass('button--disabled'); 
+                }
+
+                if($('.maps__buttons_product').hasClass('button--green')) {
+                    $('.maps__buttons_product').removeClass('button--green').addClass('button--disabled');
+                }
+            }
+        } ]
+    });
+</script>
+
+<!-- HTML -->
+<div id="mappanel"></div>
+
+{% include 'country_list' %}
+{% include 'country_list_view' %}
+
+<div class="maps__buttons">
+    <div class="maps__buttons_area">
+        <input type="button" class="button button--disabled maps__buttons_load" value="load a previous map" />
+        <input type="button" class="button button--disabled maps__buttons_save" value="save your map" />
+        <input type="button" class="button button--disabled maps__buttons_product" value="step 2: select your product!" />
+    </div>
+</div>
+
+

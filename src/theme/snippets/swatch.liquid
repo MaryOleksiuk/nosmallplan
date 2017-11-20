@@ -1,0 +1,17 @@
+<ul class="product__size swatch">
+  {% for option in product.options_with_values %}
+    {% assign option_name = option.name | downcase %}
+    {% if option_name == 'title' %}
+      {% assign option_index = forloop.index0 %}
+      {% if option.values %}
+        <p class="product__small-title">{{ option_name }}: <span>{{option.selected_value}}</span></p>
+      {% endif %}
+
+      {% for value in option.values %}
+        <li data-value="{{ value | escape }}" class="product__size-link swatch-element{% if option.selected_value == value %} swatch-active{% endif %}" data-id="{{ option_index }}">
+          <span class="product__size-text">{{ value }}</span>
+        </li>
+      {%endfor%}
+    {% endif %}
+  {% endfor %}
+</ul>

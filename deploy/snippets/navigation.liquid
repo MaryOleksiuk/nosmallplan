@@ -1,0 +1,39 @@
+<nav role="navigation">
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+  <label for="nav-toggle" class="{% if template == 'index' %} nav-toggle--white {% endif %}">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+
+  <ul class="header__nav">
+  {% for link in linklists.main-menu.links %}
+    <li class="header__nav-item {% if link.title == 'Account' %}header__nav-item--account{% endif %}">
+        <a href="{{ link.url }}" class="header__nav-item-link {% if template == 'index' %}header__nav-item-link--home{% endif%} {% if link.title == 'Account' %}header__nav-item-link--account{% endif %} {% if link.title == 'Buy' %}header__nav-item-link--buy{% endif %}">
+
+        {% if link.title == 'Account' %}
+          <img class="header__nav-item-img--account" {% if template == 'index' %} src="{{'account_icon-white.svg' | asset_url }}" {% else %} src="{{'account_icon.svg' | asset_url }}"{% endif %} alt="{{ link.title }}"><span>{{ link.title }}</span>
+        {% else %}
+          {{ link.title }}
+        {% endif %}
+      </a>
+    </li>
+    {% endfor %}
+
+    {% if customer %}
+      <li class="header__nav-item header__nav-item-accounts header__nav-item-accounts-back"><a class="header__nav-item-link">< back</a></li>
+      <li class="header__nav-item header__nav-item-accounts"><a class="header__nav-item-link" href="/account">my account</a></li>
+      <li class="header__nav-item header__nav-item-accounts"><a class="header__nav-item-link" href="/account/addresses">address book</a></li>
+      <li class="header__nav-item header__nav-item-accounts"><a class="header__nav-item-link" href="/account?view=orders">order history</a></li>
+      <li class="header__nav-item header__nav-item-accounts"><a class="header__nav-item-link" href="/account?view=maps">my maps</a></li>
+      <li class="header__nav-item header__nav-item-accounts header__nav-item-accounts-signout"><a class="header__nav-item-link" href="/account/logout">sign out</a></li>
+    {% endif %}
+  </ul>
+  <div class="header__nav-item--cart">
+    <a href="/cart" class="header__nav-item-link {% if template == 'index' %}header__nav-item-link--home{% endif %}"><img class="header__nav-item-img--buy"  {% if template == 'index' %} src="{{'buy_icon-white.svg' | asset_url }}" {% else %} src="{{'buy_icon.svg' | asset_url }}"{% endif %} alt="{{ link.title }}">
+    {% if cart.item_count > -1 %}
+      <span class="products-amount cart-count" id="cart-count">{{ cart.item_count }}</span>
+    {% endif %}
+    </a>
+  </div>
+</nav>

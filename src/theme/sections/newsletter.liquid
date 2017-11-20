@@ -1,0 +1,45 @@
+<section class="newsletter">
+  <h2 class="newsletter__title">{{ section.settings.title }}</h2>
+  <p class="newsletter__text">{{ section.settings.subheading }}</p>
+
+  <form id="email_signup" class="klaviyo_standard_embed_Qbt8Az" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">
+    <input type="hidden" name="g" value="Qbt8Az">
+    <div class="klaviyo_field_group newsletter__email">
+      <input type="email" value="" name="email" id="k_id_email" placeholder="email@address.com" class="newsletter__email--input" />
+    </div>
+    <div class="klaviyo_messages">
+      <div class="success_message" style="display:none;"></div>
+      <div class="error_message" style="display:none;"></div>
+    </div>
+    <div class="klaviyo_form_actions newsletter__email">
+      <button type="submit" class="klaviyo_submit_button newsletter__submit-btn"><img src="{{ 'arrow-gold.svg' | asset_url }}"></button>
+    </div>
+  </form>
+</section>
+
+<script type="text/javascript" src="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"></script>
+<script type="text/javascript">
+  KlaviyoSubscribe.attachToForms('#email_signup', {
+    hide_form_on_success: true
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Subscribe to our newsletter"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Vivamus et ante quis sem imperdiet tincidunt et eu ex. Fusce magna dui, pharetra et lorem vulputate, malesuada luctus nulla. Aenean tristique tortor quis congue blandit."
+    }
+  ]
+}
+{% endschema %}

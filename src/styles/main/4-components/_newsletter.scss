@@ -1,0 +1,83 @@
+.newsletter {
+  padding: 37px 0 44px;
+  margin-bottom: 0;
+  background-color: $dark-blue;
+  text-align: center;
+  color: $gold;
+
+  @include breakpoint(tablet) {
+    padding: 90px 0 97px;
+    margin-bottom: 47px;
+  }
+
+  &__title {
+    font-size: 38px;
+    line-height: 46px;
+    padding: 0 20px 15px;
+
+    @include breakpoint(tablet) {
+      padding-bottom: 32px;
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+
+  &__text {
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 38px;
+    font-size: 12px;
+    line-height: 18px;
+
+    @include breakpoint(tablet) {
+      width: 55%;
+      padding-bottom: 45px;
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+
+  &__email {
+    position: relative;
+    display: inline-block;
+    width: 90%;
+
+    @include breakpoint(tablet) {
+      width: 445px;
+      max-width: 100%;
+    }
+
+    &--input {
+      height: 40px;
+      width: 100%;
+      padding-right: 30px;
+      background-color: transparent;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid $gold;
+      color: $gold;
+      font-size: 24px;
+      line-height: 34px;
+      opacity: 1;
+
+      &::placeholder {
+        color: $gold;
+        font-size: 24px;
+        line-height: 34px;
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &__submit-btn {
+    width: 24px;
+    height: 21px;
+    padding: 0;
+    position: absolute;
+    right: 0px;
+    top: -45px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+}

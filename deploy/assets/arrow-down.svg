@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="6px" height="4px" viewBox="0 0 6 4" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
+    <title>Arrow Down</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Input/Dropdown" transform="translate(-167.000000, -21.000000)" fill="#393D3F">
+            <polygon id="Arrow-Down" transform="translate(170.000000, 23.000000) rotate(-270.000000) translate(-170.000000, -23.000000) " points="168.934211 20 168 20.9181034 170.118421 23 168 25.0818966 168.934211 26 172 23"></polygon>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,76 @@
+.footer {
+  padding: 43px 20px 57px;
+  // height: 370px;
+  background-color: $light-blue;
+
+  @include breakpoint(tablet) {
+    padding: 33px 20px 37px;
+    // height: 150px;
+  }
+
+  &__nav {
+    text-align: center;
+    &-item {
+      display: block;
+      padding: 0 16px 20px;
+
+      @include breakpoint(tablet) {
+        display: inline-block;
+        padding-bottom: 0;
+      }
+
+      &-link {
+        font-size: 18px;
+        line-height: 25px;
+        font-weight: $fw-bold;
+        text-transform: uppercase;
+        color: $white;
+        letter-spacing: 2px;
+        transition: all 0.5s ease;
+        border-bottom: 2px solid transparent;
+
+        &--active {
+          border-color: $white;
+        }
+
+        &:hover {
+          border-color: $white;
+        }
+      }
+    }
+  }
+  &__social {
+    padding-top: 5px;
+    text-align: center;
+    &-item {
+      margin: 0 12px;
+      display: inline-block;
+      img {
+        padding: 5px;
+        height: 20px;
+        width: auto;
+        max-width: none;
+        box-sizing: content-box;
+      }
+    }
+    @include breakpoint(tablet) {
+      padding-top: 25px;
+      img {
+        padding: 0;
+        height: 14px;
+      }
+    }
+  }
+
+  &__copyright {
+    padding-top: 25px;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: $dark-gray;
+
+    @include breakpoint(tablet) {
+      padding-top: 25px;
+    }
+  }
+}

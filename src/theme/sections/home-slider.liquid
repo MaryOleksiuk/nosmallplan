@@ -1,0 +1,55 @@
+<section class="banner banner--home_slider">
+  
+  {% for slide in section.blocks  %}
+    <div class="home__slide" style="{% if forloop.index0 == 0 %}min-height:580px;{% else %}display:none;{% endif %}">
+      <img class="banner__image" src="{{slide.settings.slide_image | img_url: 'master'}}" alt="{{slide.settings.title}}">
+      <div class="banner__content">
+        <h1 class="banner__title">{{ slide.settings.slide_title }}</h1>
+        <a class="button button--green" href="{{slide.settings.slide_url}}">{{ slide.settings.slide_btn_text }}</a>
+      </div>
+    </div>
+  {% endfor %}
+
+  {% comment %}<div class="home__slider__slide">
+    <img class="banner__image" src="{% if section.settings.image == blank %} {{'bg_home-banner.jpg' | asset_url }} {%else %} {{ section.settings.image }} {% endif %}" alt="{{ section.settings.title }}">
+    <div class="banner__content">
+      <h1 class="banner__title">{{ section.settings.title }}</h1>
+      <a class="button button--green" href="#">Make your map</a>
+    </div>
+  </div>{% endcomment %}
+  
+</section>
+
+{% schema %}
+  {
+    "name": "Home slider",
+    "blocks": [
+      {
+        "type": "slide",
+        "name": "Slide",
+        "settings": [
+          {
+            "id": "slide_image",
+            "type": "image_picker",
+            "label": "Slide image"
+          },
+          {
+            "id": "slide_title",
+            "type": "text",
+            "label": "Slide title"
+          },
+          {
+            "id": "slide_btn_text",
+            "type": "text",
+            "label": "Slide button text"
+          },
+          {
+            "id": "slide_url",
+            "type": "text",
+            "label": "Slide button url"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

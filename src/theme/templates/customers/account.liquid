@@ -1,0 +1,30 @@
+{% layout 'customer' %}
+
+<div class="account--page">
+    <h3 class="head-text">Hi {{ customer.name }},</h3>
+
+    {% section 'account_sidebar' %}
+
+    <div id="customer_orders" class="account--page_right">
+        <div class="block" id="block--account">
+            <h4>my info</h4>
+            <ul>
+                <li>{{ customer.name }}</li>
+                <li>{{ customer.email }}</li>
+            </ul>
+            <div class="actions">
+                <a class="button" href="/account?view=edit">edit</a>
+            </div>
+        </div>
+        <div class="h-divider-line"></div>
+        <div class="block" id="block--password">
+            <h4>password</h4>
+            <ul>
+                <li>**********</li>
+            </ul>
+            <div class="actions">
+                <a class="button" href="/account?view=change_password">edit</a>
+            </div>
+        </div>
+    </div>
+</div>

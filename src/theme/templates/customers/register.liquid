@@ -1,0 +1,105 @@
+{% comment %}
+{% layout settings.customer_layout %}
+{% endcomment %}
+
+<div id="template">
+  <div class="container--account">
+    <div class="modal">
+      <div id="customer">
+        <div class="template_header">
+          <h2 class="title">Sign In</h2>
+        </div>
+
+          {% form 'customer_login' %}
+
+            <div class="subject">sign in with email</div>
+
+            <div id="login_email" class="clearfix large_form">
+              <input type="email" value="" name="customer[email]" id="customer_email" class="form-field" placeholder="Enter your e-mail" required />
+            </div>
+
+            {% if form.password_needed %}
+
+              <div id="login_password" class="clearfix large_form">
+                  <input type="password" value="" name="customer[password]" id="customer_password" class="form-field" placeholder="Your Account Password" required />
+                  <div class="note">
+                    <a href="#" id="forgot_password">Forgot Password?</a>
+                  </div>
+              </div>
+
+            {% endif %}
+
+            <div class="action_bottom">
+              <a class="button button--green button--full" onclick="customer_login.submit()">Sign In</a>
+            </div>
+          {% endform %}
+      </div>
+
+      {% comment %}
+        Recover Password Form
+      {% endcomment %}
+
+      <div id="recover-password" style='display:none'>
+        <div class="template_header">
+            <h2 class="title">Reset Password</h2>
+            <p>We will send you an email to reset your password.</p>
+        </div>
+
+        {% form 'recover_customer_password' %}
+ 
+          <div class="clearfix large_form">
+            <input type="email" value="" name="email" id="recover_email" class="form-field" placeholder="Email" required />
+          </div>
+          <div class="action_bottom">
+            <a class="button button--green button--full" id="btn_recover_customer_password">Submit</a>
+            <span class="note">or <a href="#" id="cancel-forgot">Cancel</a></span>
+          </div>
+        {% endform %}
+      </div>
+    </div>
+
+    <div class="v--linebox"></div>
+
+    <div class="modal">
+      <!-- Create Customer -->
+      <div id="create-customer">
+        <div class="template_header">
+          <h2 class="title">New to No Small Plan?</h2>
+        </div>
+
+        {% form 'create_customer' %}
+          {{ form.errors | default_errors }}
+
+          <div class="subject">create an account to easily save & update your maps as you travel the globe!</div>
+
+          <div class="clearfix large_form">
+            <input type="text" value="" name="customer[first_name]" id="first_name" class="form-field" placeholder="First Name" required />
+          </div>
+
+          <div class="clearfix large_form">
+            <input type="text" value="" name="customer[last_name]" id="last_name" class="form-field" placeholder="Last Name" required />
+          </div>
+
+          <div class="clearfix large_form">
+            <input type="email" value="" name="customer[email]" id="email" class="form-field" placeholder="Email Address" required />
+          </div>
+
+          <div class="clearfix large_form">
+            <input type="password" value="" name="customer[password]" id="password" class="form-field" placeholder="Password" required />
+          </div>
+
+          <div class="clearfix large_form">
+            <input type="checkbox" value="1" checked name="customer[contact]" id="subscribe" class="form-field" />
+            <span class="note">Sign up to receive No Small Plan newsletters</span>
+          </div>
+
+          <div class="action_bottom">
+            <a class="button button--green button--full" onclick="create_customer.submit()">Create Your Account</a>
+          </div>
+        {% endform %}
+      </div>
+      <!-- /#create-customer -->
+    </div>
+  </div>
+  
+</div>

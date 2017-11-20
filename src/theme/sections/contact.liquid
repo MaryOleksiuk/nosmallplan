@@ -1,0 +1,56 @@
+<section class="contact">
+  <h1 class="contact__title">{{ page.title }}</h1>
+  <p class="contact__text">{{ page.content }}</p>
+
+  <div class="contact__form">
+    {% form 'contact' %}
+      {% if form.posted_successfully? %}
+        <p class="form-success">
+          {{ 'contact.form.post_success' }}
+        </p>
+      {% endif %}
+
+      {{ form.errors | default_errors }}
+      <div class="contact__input-name">
+        <input class="contact__input" type="text" name="First Name" value="" placeholder="First Name *" required>
+        <input class="contact__input contact__input--name" type="text" name="Last Name" placeholder="Last Name *" required>
+      </div>
+
+      <input class="contact__input" type="email" name="E-Mail" autocorrect="off" autocapitalize="off" value="" placeholder="Enter Your E-Mail *" required>
+
+      <label class="contact__select-wrap">
+        <select class="contact__select">
+          {% comment %}<option disabled selected value="">What is your reason for contacting us?</option>{% endcomment %}
+          {% for block in section.blocks %}
+            <option value="">{{block.settings.contact_select}}</option>
+          {% endfor %}
+        </select>
+      </label>
+
+      <input class="contact__input" type="text" name="Subject" placeholder="Subject" value="">
+
+      <textarea class="contact__textarea" name="Message" placeholder="Message" value=""></textarea>
+
+      <button class="button button--green button--full" type="submit">Submit</button>
+    {% endform %}
+  </div>
+</section>   
+
+{% schema %}
+  {
+    "name": "Contact form",
+    "blocks": [
+      {
+        "type": "option",
+        "name": "Dropdown options",
+        "settings": [
+          {
+            "id": "contact_select",
+            "type": "text",
+            "label": "Dropdown option"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

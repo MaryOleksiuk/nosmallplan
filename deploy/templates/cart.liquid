@@ -1,0 +1,99 @@
+
+<section class="cart">
+  <h1 class="cart__title">Your Cart</h1>
+
+  {% if cart.item_count > 0 %}
+    <form action="/cart" method="post" novalidate class="cart__form">
+      <div class="cart__table">
+        <div class="cart__row cart__header">
+          <div class="cart__header-item">Item</div>
+          <div class="cart__header-item">Quantity</div>
+          <div class="cart__header-item">Price</div>
+          <div class="cart__header-item">Subtotal</div>
+        </div>
+        {% for item in cart.items %}
+          {% assign item_index = forloop.index0 %}
+          <div class="cart__row">
+            <div class="cart__cell cart__cell--product-image">
+              <a href="{{ item.url | within: collections.all }}">
+                <img class="cart__image" src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+              </a>
+            </div>
+            <div class="cart__cell cart__cell--description">
+              <p class="cart__product--title">{{ item.product.title }}</p>
+              <p class="cart__product--details">SKU: {{ item.sku }}</p>
+              <p class="cart__product--details">
+                   {% for option_title in item.product.options %}
+                     {{ option_title | escape | capitalize }}: <strong>{{ item.variant.options[forloop.index0] | escape | capitalize }}</strong> <br>
+                   {% endfor %}
+              </p>
+
+              {% assign property_size = item.properties | size %}
+              {% if property_size > 0 %}
+                {% for p in item.properties %}
+                  {% case p.first %}
+                    {% when 'map_name_lineitem' %}
+                      <p class="cart__product--details">Map: {{p.last}}</p>
+                    {% when 'map_countries_lineitem' %}
+                      <div class=" cart__product--countries" id="product-countries">{{p.last}}</div>
+                    {% else %}
+                  {% endcase %}
+                {% endfor %}
+              {% endif %}
+            </div>
+            <div class="cart__cell">
+              {% if item.quantity > 0 %}
+                <input itemid="{{ item.variant_id }}" id="updates_{{ item.variant_id }}" data-loopindex="{{item_index}}" name="updates[]" class="cart__quantity" min="1" type="number" value="{{ item.quantity }}" pattern="[0-9]*" />
+              {% endif %}
+            </div>
+            <div class="cart__cell item-price">{{ item.price | money }}</div>
+            <div class="cart__cell" id="cart__lineitem_lineprice_{{item.variant_id}}_{{item_index}}">{{ item.line_price | money }}</div>
+            <div class="cart__cell cart__cell--country-selection"><a class="cart__country-selection">Review country selection</a></div>
+            <div class="cart__cell cart__cell--remove">
+              <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="cart__remove">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="cart__checkout">
+        <a href="/collections/all" class="button continue-shopping">Continue shopping</a>
+        <p class="cart__checkout-promo">Have a promo code? Codes are applied at checkout!</p>
+        <div class="cart__total">
+          <div>
+            <span class="cart__total-title">Subtotal</span>
+            <span id="cart__subtotal-price">{{ cart.total_price | money }}</span>
+          </div>
+          <!--div>
+            <span class="cart__total-title">Tax</span>
+            <span id="tax-total">
+              {% assign tax_price = cart.total_price | divided_by: 10 %}   
+              {{ tax_price | money }}
+            </span>
+          </div-->
+          <div class="cart__total-price">
+            <span class="cart__total-title">Order Total</span>
+            <span id="cart__total-price">{{ cart.total_price | money }}</span>
+          </div>
+
+          <div class="cart__total-confirm">
+            <h4 class="cart__total-confirm-title">Confirm your selections</h4>
+            <p class="cart__total-confirm-text">Due to the custom nature of our products, we require you confirm you have made the correct selection before checking out.</p>
+            <a class="button button--green button-confirm">Confirm</a>
+          </div>
+
+          <input type="submit" name="checkout" class="button button--disabled button-checkout" value="Continue to checkout">
+        </div>
+      </div>
+    </form>
+  {% else %}
+    <p class="cart--empty-message">Your cart is empty! <span>Continue browsing <a href="/collections/all">here</a>.</span></p>
+  {% endif %}
+
+</section>
+
+<script>
+  window.money_with_currency_format = "{{ shop.money_with_currency_format }}";
+</script>

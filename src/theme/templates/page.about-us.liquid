@@ -1,0 +1,22 @@
+
+<section class="about-us">
+  <div class="about-us__banner">
+    <img src="{{'bg_about-banner.jpg' | asset_url }}" alt="About Us" class="about-us__banner-image">
+    <div class="about-us__banner-content">
+      <h1 class="about-us__banner-title">{{ page.title }}</h1>
+    </div>
+  </div>
+
+  <div class="about-us__description">
+    <h2 class="about-us__description-title">{{ shop.name }}</h2>
+    <p class="about-us__description-text">
+      {{ page.content }}
+    </p>
+  </div>
+
+  {% section 'section-black' %}
+
+  {% section 'section-white' %}
+
+  {% section 'instagram' %}
+</section>

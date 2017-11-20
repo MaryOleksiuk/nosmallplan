@@ -1,0 +1,306 @@
+/* maps page */
+section.maps {
+	background: #5c7379;
+
+	&.maps--home {
+		padding: 50px 0 30px 0;
+		background: #fbfbfb;
+
+		.maps__step_header {
+			@media (min-width: $large) {
+				display: block;
+			}
+		}
+	}
+
+	#map_sidebar {
+		width: 362px;
+		max-width: 362px;
+		height: 100%;
+		min-height: 100vh;
+		background: #5c7379;
+		float: left;
+
+		.map_sidebar--block {
+
+			&:nth-child(1) {
+				div {
+					display: none;
+				}
+
+				&.active--side {
+					padding-bottom: 40px;
+
+					div {
+						display: block;
+					}
+				}
+
+
+			}
+
+			&.active--side {
+				background: #465d62;
+
+				h2 {
+					cursor: default;
+				}
+			}
+
+			h2 {
+				font-size: 1.2rem;
+				color: #fff;
+				padding: 30px;
+				text-transform: uppercase;
+				font-weight: 600;
+				letter-spacing: 1px;
+				cursor: pointer;
+			}
+
+			p {
+				font-size: 0.8rem;
+				color: #f8f8f8;
+				line-height: 1.5;
+				padding: 0 30px;
+			}
+
+			a {
+				display: block;
+				text-align: center;
+				text-decoration: underline;
+				padding: 15px 0;
+				color: #b1b5b6;
+				font-size: 0.85rem;
+				background: none;
+				cursor: pointer;
+
+				&:hover, &:active {
+					color: #fff;
+				}
+			}
+
+			.button {
+				width: 302px;
+				border-radius: 0;
+				padding: 0 30px;
+				margin: 0 30px;
+
+				&.button--disabled {
+					border: 1px solid #cbcbcb;
+					background: rgba(0,0,0,0.01);
+					color: #cbcbcb;
+				}
+
+				&.button--green {
+					border: 1px solid #00A79D;
+					cursor: pointer;
+				}
+
+				&.maps__buttons_save {
+					margin-top: 40px;
+				}
+
+				&.maps__buttons_product {
+
+				}
+			}
+		}
+
+		@media (max-width: $large) {
+			display: none;
+		}
+	}
+
+	.map-contents-area {
+		margin-left: 362px;
+		background: #fff;
+
+		@media (max-width: $large) {
+			margin-left: 0;
+		}
+
+		.maps__buttons {
+			display: none;
+
+			@media (max-width: $large) {
+				display: block;
+			}
+		}
+	}
+
+	.maps__step_header {
+        background: #5c7379;
+        text-align: center;
+        text-transform: uppercase;
+
+		h5 {
+			color: #fff; 
+			padding: 12px 0;
+		}
+
+		@media (min-width: $large) {
+			display: none;
+		}
+	}
+	.maps__intro {
+		max-width: 575px;
+		margin: 0 auto;
+		margin-bottom: 30px;
+		text-align: center;
+		@media (max-width: $tablet) {
+			max-width: 100%;
+			padding: 0 20px;
+		}
+		&__title {
+			margin-bottom: 10px;
+			font-size: 56px;
+			font-family: $font-family--titles;
+			letter-spacing: em(1, 56);
+			color: $light-black;
+			@media (max-width: $mobile) {
+				font-size: 24px;
+			}
+		}
+		p {
+			line-height: 1.5;
+			color: $light-black;
+			@media (max-width: $mobile) {
+				font-size: 12px;
+			}
+		}
+	}
+
+
+	#mappanel {
+		width: 100%;
+		max-width: 1125px;
+		height: 700px;
+		margin: auto;
+
+		@media (max-width: $medium) {
+			max-width: 990px;
+			width: 90%;
+			margin: auto;
+			height: 500px;
+		}
+
+		@media (max-width: $tablet) {
+			width: 90%;
+			margin: auto;
+			height: 500px;
+		}
+
+		@media (max-width: $mobile) {
+			width: 90%;
+			margin: auto;
+			height: 400px;
+		}
+	}
+
+	.maps__buttons {
+		max-width: 1125px;
+		margin: auto;
+		padding: 30px 0;
+
+		@media (max-width: $medium) {
+			width: 90%;
+			max-width: 990px;
+		}
+
+		@media (max-width: $tablet) {
+			width: 90%;
+			margin: auto;
+		}
+
+		@media (max-width: $mobile) {
+			padding-top: 0;
+		}
+
+		.button {
+			display: inline-block;
+
+			@media (max-width: $tablet) {
+				font-size: 16px;
+			}
+
+			@media (max-width: $mobile) {
+				margin: 10px 0;
+				font-size: 16px;
+			}
+
+			&:nth-child(1) {
+				width: 29%;
+				pointer-events: auto;
+
+				@media (max-width: $mobile) {
+					width: 100%;
+				}
+			}
+
+			&:nth-child(2) {
+				width: 19%;
+				@media (max-width: $tablet) {
+					width: 25%;
+				}
+				@media (max-width: $mobile) {
+					width: 100%;
+				}
+			}
+
+			&:nth-child(3) {
+				width: 49%;
+				@media (max-width: $tablet) {
+					width: 43%;
+				}
+				@media (max-width: $mobile) {
+					width: 100%;
+				}
+			}
+
+		}
+	}
+
+	#result--signin {
+		display: none;
+	}
+
+	.row {
+		max-width: 1125px;
+		margin: 0px auto;
+
+		@media (max-width: $medium) {
+			width: 90%;
+			max-width: 990px;
+		}
+	}
+		
+	#select-product {
+		display: none;
+
+		.products-item {
+			a.products-item__link {
+				display: block;
+				cursor: pointer;
+			}
+		}
+	}
+
+	#selected-product {
+		display: none;
+
+		.product__image {
+
+			.slick-list {
+				height: auto !important;
+			}
+		}
+
+		#product-view-panel {
+
+			& .loading {
+				text-align: center;
+				padding: 200px 0;
+			}
+		}
+	}
+}

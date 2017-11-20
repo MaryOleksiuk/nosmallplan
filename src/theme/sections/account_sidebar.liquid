@@ -1,0 +1,12 @@
+<div id="customer_sidebar">
+    <div id="customer_detail" class="group">
+        <ul>
+            <li><a href="/account" {% if template == 'customers/account' %}class="active"{% endif %}>my account</a></li>
+            <li><a href="/account/addresses" {% if template == 'customers/addresses' %}class="active"{% endif %}>address book</a></li>
+            <li><a href="/account?view=orders" {% if template contains 'order' %}class="active"{% endif %}>order history</a></li>
+            <li><a href="/account?view=maps" {% if template == 'customers/account.maps' %}class="active"{% endif %}>maps</a></li>
+        </ul>
+        <div class="h-divider-line"></div>
+        <a href="/account/logout" class="account--logout">Sign Out</a>
+    </div>
+</div>

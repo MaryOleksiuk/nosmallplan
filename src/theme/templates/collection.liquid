@@ -1,0 +1,9 @@
+<section class="collection">
+  <div class="row">
+    {% for product in collection.products %}
+      {% include 'product-card-grid' %}
+    {% endfor %}
+
+    {% section 'banner' %}
+  </div>
+</section>

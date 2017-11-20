@@ -1,0 +1,27 @@
+<section class="image-block {% if product.metafields.sf_product_banner == blank %} display-none {% endif %}" >
+  {% assign my_image = product.metafields.sf_product_banner.image %}
+  {% if my_image %}
+    <img src="{{ my_image }}">
+  {% endif %}
+
+  <div class="image-block__content">
+    <h5 class="image-block__subtitle">
+      {% assign my_value = product.metafields.sf_product_banner.subtitle %}
+      {% if my_value %}
+        {{ my_value }}
+      {% endif %}
+    </h5>
+    <h4 class="image-block__title">
+      {% assign my_value = product.metafields.sf_product_banner.title %}
+      {% if my_value %}
+        {{ my_value }}
+      {% endif %}
+    </h4>
+    <p class="image-block__text">
+      {% assign my_value = product.metafields.sf_product_banner.description | truncatewords: 55 %}
+      {% if my_value %}
+        {{ my_value }}
+      {% endif %}
+    </p>
+  </div>
+</section>

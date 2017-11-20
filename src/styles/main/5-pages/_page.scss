@@ -1,0 +1,48 @@
+// STYLES for Text pages
+.text-page {
+  &__content {
+    padding: 33px 33px 49px;
+
+    @include breakpoint(tablet) {
+      padding: 100px 102px 85px;
+    }
+
+    @include breakpoint(desktop) {
+      padding: 100px 262px 85px;
+    }
+  }
+
+  &__title {
+    padding-bottom: 24px;
+    font-size: 24px;
+    line-height: 26px;
+    font-weight: $fw-medium;
+    text-align: center;
+    color: $light-black;
+
+    @include breakpoint(tablet) {
+      padding-bottom: 70px;
+      font-size: 48px;
+    }
+  }
+
+  &__text {
+    font-size: 12px;
+    line-height: 18px;
+    color: $light-black;
+
+    @include breakpoint(tablet) {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+
+  p {
+    padding: 10px 0;
+    line-height: 24px;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+}

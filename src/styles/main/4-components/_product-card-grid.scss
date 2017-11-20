@@ -1,0 +1,142 @@
+.products {
+  padding: 0 28px 45px;
+
+  @include breakpoint(tablet) {
+    padding: 0 90px 48px;
+  }
+
+  .row {
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+
+  &__title {
+    margin-top: 45px;
+    margin-bottom: 45px;
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: $fw-bold;
+    color: $light-black;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+
+    &:before,
+    &:after {
+      content: "";
+      height: 1px;
+      width: 30%;
+      background: $gray-line;
+      position: absolute;
+      top: 13px;
+
+      @include breakpoint(tablet) {
+        width: 40%;
+      }
+    }
+
+    &:before {
+      left: 0;
+    }
+
+    &:after {
+      right: 0;
+    }
+  }
+
+  &__all {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+
+    @include breakpoint(tablet) {
+      display: none;
+    }
+  }
+
+  &-item {
+    text-align: center;
+    width: 50%;
+
+    @include breakpoint(tablet) {
+      width: 25%;
+      margin-right: 20px;
+    }
+
+    @include breakpoint(hd) {
+      margin-right: 40px;
+    }
+
+    &:nth-last-child(1),
+    &:nth-last-child(2) {
+      display: none;
+
+      @include breakpoint(tablet) {
+        display: block;
+      }
+    }
+
+    &:nth-last-child(1) {
+      margin-right: 0;
+    }
+
+    &__link {
+      .products-item__image {
+        transition: opacity 0.5s ease-in-out;
+      }
+      &:hover {
+        .products-item__title,
+        .products-item__image {
+          opacity: 0.6;
+        }
+      }
+    }
+
+    &__colors {
+      &-link {
+        width: 21px;
+        height: 21px;
+        display: inline-block;
+        margin-right: 7px;
+        line-height: 21px;
+        text-align: center;
+        border: 1px solid transparent;
+        border-radius: 21px;
+        cursor: pointer;
+
+        &:hover {
+          border: 1px solid $brown;
+        }
+
+        img {
+          max-width: none;
+        }
+      }
+    }
+
+    &__title {
+      font-size: 11px;
+      line-height: 15px;
+      font-weight: $fw-bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: $light-black;
+      transition: opacity 0.5s ease-in-out;
+
+      @include breakpoint(tablet) {
+        font-size: 18px;
+        line-height: 25px;
+      }
+    }
+
+    &__price {
+      font-size: 12px;
+      line-height: 18px;
+
+      @include breakpoint(tablet) {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+  }
+}
